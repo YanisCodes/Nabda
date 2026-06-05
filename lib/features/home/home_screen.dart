@@ -7,6 +7,8 @@ import '../../data/models/event.dart';
 import '../event_detail/event_detail_screen.dart';
 import '../explore/explore_screen.dart';
 import '../explore/widgets/event_card.dart';
+import '../map/map_screen.dart';
+import '../profile/profile_screen.dart';
 import 'home_provider.dart';
 import 'widgets/section_header.dart';
 
@@ -32,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           _HomeContent(onGoToExplore: _goToExplore),
           const ExploreScreen(),
+          const MapScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -47,6 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.explore_outlined),
             activeIcon: Icon(Icons.explore_rounded),
             label: 'Explorer',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            activeIcon: Icon(Icons.map_rounded),
+            label: 'Carte',
           ),
         ],
       ),
@@ -70,7 +78,12 @@ class _HomeContent extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline),
-            onPressed: () {},
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => const ProfileScreen(),
+              ),
+            ),
           ),
         ],
       ),

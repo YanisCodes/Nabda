@@ -73,8 +73,8 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 7 — Profil
 
-- [ ] **T23** Créer `lib/features/profile/profile_screen.dart` : affiche ville + langue, permet modification, bouton "Effacer données locales"
-- [ ] **T24** Modification ville/langue : met à jour les préférences et rafraîchit l'accueil
+- [x] **T23** Créer `lib/features/profile/profile_screen.dart` : affiche ville + langue, permet modification, bouton "Effacer données locales"
+- [x] **T24** Modification ville/langue : met à jour les préférences et rafraîchit l'accueil
 
 **Livrable T23→T24 :** profil modifiable, changement de ville reflété sur l'accueil.
 
@@ -82,10 +82,10 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 8 — Carte (centres ODEJ)
 
-- [ ] **T25** Ajouter `flutter_map` + `latlong2` dans pubspec
-- [ ] **T26** Créer `lib/features/map/map_screen.dart` : flutter_map centré sur la ville du profil, tiles OpenStreetMap
-- [ ] **T27** Ajouter les markers des centres mockés sur la carte
-- [ ] **T28** Tap sur marker → BottomSheet avec nom, adresse, horaires, téléphone
+- [x] **T25** Ajouter `flutter_map` + `latlong2` dans pubspec
+- [x] **T26** Créer `lib/features/map/map_screen.dart` : flutter_map centré sur la ville du profil, tiles OpenStreetMap
+- [x] **T27** Ajouter les markers des centres mockés sur la carte
+- [x] **T28** Tap sur marker → BottomSheet avec nom, adresse, horaires, téléphone
 
 **Livrable T25→T28 :** carte fonctionnelle, centres visibles, aucun compte Google Maps requis.
 
@@ -93,10 +93,10 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 9 — SQLite avec drift
 
-- [ ] **T29** Créer `lib/data/local/database.dart` : tables Events, Centers, UserProfile avec drift
-- [ ] **T30** Créer `lib/data/local/daos/events_dao.dart` et `centers_dao.dart`
-- [ ] **T31** Seed initial : insérer les données mockées dans SQLite au premier lancement
-- [ ] **T32** Brancher les providers Riverpod sur drift (remplace les listes mockées statiques)
+- [x] **T29** Créer `lib/data/local/database.dart` : tables Events, Centers, UserProfile avec drift
+- [x] **T30** Créer `lib/data/local/daos/events_dao.dart` et `centers_dao.dart`
+- [x] **T31** Seed initial : insérer les données mockées dans SQLite au premier lancement
+- [x] **T32** Brancher les providers Riverpod sur drift (remplace les listes mockées statiques)
 
 **Livrable T29→T32 :** données persistantes localement, app fonctionne hors ligne.
 

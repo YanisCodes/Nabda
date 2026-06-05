@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_theme.dart';
+import '../../../l10n/app_localizations.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
@@ -14,6 +15,8 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 10),
       child: Row(
@@ -29,9 +32,9 @@ class SectionHeader extends StatelessWidget {
           if (onSeeAll != null)
             GestureDetector(
               onTap: onSeeAll,
-              child: const Text(
-                'Voir tout',
-                style: TextStyle(
+              child: Text(
+                l10n.actionSeeAll,
+                style: const TextStyle(
                   color: AppColors.green,
                   fontSize: 13,
                   fontWeight: FontWeight.w500,

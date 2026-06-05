@@ -6,6 +6,7 @@ import '../../data/local/mock_repository.dart';
 import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
 import '../../data/models/event_category.dart';
+import '../../l10n/app_localizations.dart';
 
 class EventDetailScreen extends StatelessWidget {
   const EventDetailScreen({super.key, required this.event});
@@ -102,13 +103,13 @@ class _EventBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Titre + badges
           Text(
             event.title,
             style: theme.textTheme.headlineSmall?.copyWith(
@@ -126,8 +127,6 @@ class _EventBody extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-
-          // Infos date + lieu
           _InfoRow(
             icon: Icons.calendar_today_outlined,
             text: _formatDateRange(event),
@@ -138,13 +137,10 @@ class _EventBody extends StatelessWidget {
             text: event.city,
           ),
           const SizedBox(height: 20),
-
           const Divider(height: 1),
           const SizedBox(height: 20),
-
-          // Description
           Text(
-            'À propos',
+            l10n.sectionAbout,
             style: theme.textTheme.titleMedium?.copyWith(
               color: AppColors.textPrimary,
               fontWeight: FontWeight.w600,
@@ -158,18 +154,13 @@ class _EventBody extends StatelessWidget {
               height: 1.6,
             ),
           ),
-
-          // Centre info
           if (center != null) ...[
             const SizedBox(height: 24),
             const Divider(height: 1),
             const SizedBox(height: 20),
             _CenterCard(center: center!),
           ],
-
           const SizedBox(height: 28),
-
-          // Bouton contact
           _ContactButton(center: center),
           const SizedBox(height: 16),
         ],
@@ -233,11 +224,13 @@ class _CenterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Centre organisateur',
+          l10n.sectionOrganizerCenter,
           style: theme.textTheme.titleMedium?.copyWith(
             color: AppColors.textPrimary,
             fontWeight: FontWeight.w600,
@@ -262,20 +255,11 @@ class _CenterCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              _CenterRow(
-                icon: Icons.location_on_outlined,
-                text: center.address,
-              ),
+              _CenterRow(icon: Icons.location_on_outlined, text: center.address),
               const SizedBox(height: 6),
-              _CenterRow(
-                icon: Icons.access_time_outlined,
-                text: center.hours,
-              ),
+              _CenterRow(icon: Icons.access_time_outlined, text: center.hours),
               const SizedBox(height: 6),
-              _CenterRow(
-                icon: Icons.phone_outlined,
-                text: center.phone,
-              ),
+              _CenterRow(icon: Icons.phone_outlined, text: center.phone),
             ],
           ),
         ),
@@ -314,6 +298,7 @@ class _ContactButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final phone = center?.phone;
 
     return SizedBox(
@@ -321,7 +306,7 @@ class _ContactButton extends StatelessWidget {
       child: ElevatedButton.icon(
         onPressed: phone != null ? () => _dialPhone(context, phone) : null,
         icon: const Icon(Icons.phone_rounded, size: 18),
-        label: const Text('Contacter le centre'),
+        label: Text(l10n.btnContactCenter),
       ),
     );
   }
@@ -332,8 +317,8 @@ class _ContactButton extends StatelessWidget {
     if (!await launchUrl(uri)) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Impossible d\'ouvrir l\'application téléphone'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context).errorCantOpenPhone),
           ),
         );
       }
@@ -341,7 +326,7 @@ class _ContactButton extends StatelessWidget {
   }
 }
 
-// ─── Badges (dupliqués depuis event_card pour encapsulation) ─────────────────
+// ─── Badges ───────────────────────────────────────────────────────────────────
 
 class _CategoryBadge extends StatelessWidget {
   const _CategoryBadge({required this.category});
@@ -349,12 +334,13 @@ class _CategoryBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final (label, color) = switch (category) {
-      EventCategory.formation => ('Formation', const Color(0xFF1565C0)),
-      EventCategory.sport => ('Sport', const Color(0xFF2E7D32)),
-      EventCategory.culture => ('Culture', const Color(0xFF6A1B9A)),
-      EventCategory.ecologie => ('Écologie', AppColors.green),
-      EventCategory.volontariat => ('Volontariat', const Color(0xFFBF360C)),
+      EventCategory.formation => (l10n.categoryFormation, const Color(0xFF1565C0)),
+      EventCategory.sport => (l10n.categorySport, const Color(0xFF2E7D32)),
+      EventCategory.culture => (l10n.categoryCulture, const Color(0xFF6A1B9A)),
+      EventCategory.ecologie => (l10n.categoryEcologie, AppColors.green),
+      EventCategory.volontariat => (l10n.categoryVolontariat, const Color(0xFFBF360C)),
     };
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -381,6 +367,7 @@ class _PriceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final color = isFree ? AppColors.success : AppColors.amber;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -390,7 +377,7 @@ class _PriceBadge extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.4)),
       ),
       child: Text(
-        isFree ? 'Gratuit' : 'Payant',
+        isFree ? l10n.labelFree : l10n.labelPaid,
         style: TextStyle(
           color: color,
           fontSize: 12,

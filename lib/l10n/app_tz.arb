@@ -1,0 +1,60 @@
+{
+  "@@locale": "tzm",
+  "appName": "OTEJ Link",
+
+  "onboardingSubtitle": "Sentel taḥricett·ik\naff tifursiwin ifadden·ik.",
+  "labelYourCity": "Tamendawt·nnek",
+  "hintSelectWilaya": "Fren tawilat",
+  "labelYourLanguage": "Tutlayt·nnek",
+  "btnStart": "Bdu",
+
+  "greetingWithCity": "Ansuf, {city}!",
+  "@greetingWithCity": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "greetingNoCity": "Ansuf!",
+  "homeSubtitle": "Aff tifursiwin n ODEJ deg temnaḍt·nnek.",
+  "homeSubtitleFallback": "Ulac imunas deg {city}.\nNer wiyeḍ ara yas.",
+  "@homeSubtitleFallback": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "sectionThisWeek": "Yiwen wass-a",
+  "sectionNearbyCenters": "Imaẓayen ifadden",
+  "actionSeeAll": "Wali meṛṛa",
+  "noEventsAvailable": "Ulac imunas akka tura.",
+  "btnExploreAll": "Nadi meṛṛa",
+  "noCentersFound": "Ulac imaẓayen.",
+
+  "navHome": "Axxam",
+  "navExplore": "Nadi",
+  "navMap": "Tasedwit",
+
+  "screenTitleExplore": "Nadi",
+  "chipAll": "Meṛṛa",
+  "noEventsInCategory": "Ulac imunas deg usmel-a",
+
+  "sectionAbout": "Fell-as",
+  "sectionOrganizerCenter": "Amazray amẓiwen",
+  "btnContactCenter": "Muqel amazray",
+  "errorCantOpenPhone": "Ur zemreɣ ara ad ldiɣ aselkim",
+
+  "categoryFormation": "Tazrawt",
+  "categorySport": "Azilal",
+  "categoryCulture": "Tussna",
+  "categoryEcologie": "Tilawt",
+  "categoryVolontariat": "Tanelmadt",
+  "labelFree": "Ibeṛṛa",
+  "labelPaid": "Yettuzeyyad",
+
+  "screenTitleProfile": "Iprofil·iw",
+  "btnSave": "Sekles",
+  "sectionDangerZone": "Atig n lxeṭṛ",
+  "btnClearData": "Kkes isefka",
+  "dialogClearTitle": "Kkes isefka?",
+  "dialogClearContent": "Tamendawt·nnek d lmexyal·nnek ad ttwaḥkument. Ad tɣiḍ ɣer usebded.",
+  "actionCancel": "Sefsex",
+  "actionDelete": "Kkes",
+
+  "screenTitleMap": "Imaẓayen n ODEJ",
+  "btnContact": "Muqel"
+}

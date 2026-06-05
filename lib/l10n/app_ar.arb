@@ -1,0 +1,60 @@
+{
+  "@@locale": "ar",
+  "appName": "OTEJ Link",
+
+  "onboardingSubtitle": "خصّص تجربتك\nاكتشف الفرص القريبة منك.",
+  "labelYourCity": "مدينتك",
+  "hintSelectWilaya": "اختر ولاية",
+  "labelYourLanguage": "لغتك",
+  "btnStart": "ابدأ",
+
+  "greetingWithCity": "مرحباً، {city}!",
+  "@greetingWithCity": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "greetingNoCity": "مرحباً!",
+  "homeSubtitle": "اكتشف فرص ODEJ القريبة منك.",
+  "homeSubtitleFallback": "لا توجد أحداث في {city} بعد.\nإليك الأحداث القادمة المتاحة.",
+  "@homeSubtitleFallback": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "sectionThisWeek": "هذا الأسبوع",
+  "sectionNearbyCenters": "مراكز قريبة",
+  "actionSeeAll": "عرض الكل",
+  "noEventsAvailable": "لا توجد أحداث متاحة حالياً.",
+  "btnExploreAll": "استكشف الكل",
+  "noCentersFound": "لم يُعثر على مراكز.",
+
+  "navHome": "الرئيسية",
+  "navExplore": "استكشاف",
+  "navMap": "خريطة",
+
+  "screenTitleExplore": "استكشاف",
+  "chipAll": "الكل",
+  "noEventsInCategory": "لا توجد أحداث في هذه الفئة",
+
+  "sectionAbout": "حول",
+  "sectionOrganizerCenter": "المركز المنظّم",
+  "btnContactCenter": "الاتصال بالمركز",
+  "errorCantOpenPhone": "تعذّر فتح تطبيق الهاتف",
+
+  "categoryFormation": "تكوين",
+  "categorySport": "رياضة",
+  "categoryCulture": "ثقافة",
+  "categoryEcologie": "بيئة",
+  "categoryVolontariat": "تطوع",
+  "labelFree": "مجاني",
+  "labelPaid": "مدفوع",
+
+  "screenTitleProfile": "ملفي الشخصي",
+  "btnSave": "حفظ التعديلات",
+  "sectionDangerZone": "منطقة الخطر",
+  "btnClearData": "مسح البيانات المحلية",
+  "dialogClearTitle": "مسح البيانات؟",
+  "dialogClearContent": "سيتم حذف مدينتك وتفضيلاتك. ستعود إلى شاشة الإعداد.",
+  "actionCancel": "إلغاء",
+  "actionDelete": "مسح",
+
+  "screenTitleMap": "مراكز ODEJ",
+  "btnContact": "اتصل"
+}

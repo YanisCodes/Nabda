@@ -1,7 +1,61 @@
 {
   "@@locale": "fr",
   "appName": "OTEJ Link",
-  "@appName": {
-    "description": "Nom de l'application"
-  }
+  "@appName": { "description": "Nom de l'application" },
+
+  "onboardingSubtitle": "Personnalisez votre expérience\npour découvrir les opportunités près de chez vous.",
+  "labelYourCity": "Votre ville",
+  "hintSelectWilaya": "Sélectionnez une wilaya",
+  "labelYourLanguage": "Votre langue",
+  "btnStart": "Commencer",
+
+  "greetingWithCity": "Bonjour, {city} !",
+  "@greetingWithCity": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "greetingNoCity": "Bonjour !",
+  "homeSubtitle": "Découvrez les opportunités ODEJ près de chez vous.",
+  "homeSubtitleFallback": "Pas encore d'événements à {city}.\nVoici les prochains événements disponibles.",
+  "@homeSubtitleFallback": {
+    "placeholders": { "city": { "type": "String" } }
+  },
+  "sectionThisWeek": "Cette semaine",
+  "sectionNearbyCenters": "Centres proches",
+  "actionSeeAll": "Voir tout",
+  "noEventsAvailable": "Aucun événement disponible pour l'instant.",
+  "btnExploreAll": "Explorer tout",
+  "noCentersFound": "Aucun centre trouvé.",
+
+  "navHome": "Accueil",
+  "navExplore": "Explorer",
+  "navMap": "Carte",
+
+  "screenTitleExplore": "Explorer",
+  "chipAll": "Tout",
+  "noEventsInCategory": "Aucun événement dans cette catégorie",
+
+  "sectionAbout": "À propos",
+  "sectionOrganizerCenter": "Centre organisateur",
+  "btnContactCenter": "Contacter le centre",
+  "errorCantOpenPhone": "Impossible d'ouvrir l'application téléphone",
+
+  "categoryFormation": "Formation",
+  "categorySport": "Sport",
+  "categoryCulture": "Culture",
+  "categoryEcologie": "Écologie",
+  "categoryVolontariat": "Volontariat",
+  "labelFree": "Gratuit",
+  "labelPaid": "Payant",
+
+  "screenTitleProfile": "Mon profil",
+  "btnSave": "Enregistrer les modifications",
+  "sectionDangerZone": "Zone de danger",
+  "btnClearData": "Effacer les données locales",
+  "dialogClearTitle": "Effacer les données ?",
+  "dialogClearContent": "Votre ville et vos préférences seront supprimées. Vous serez redirigé vers l'accueil de configuration.",
+  "actionCancel": "Annuler",
+  "actionDelete": "Effacer",
+
+  "screenTitleMap": "Centres ODEJ",
+  "btnContact": "Contacter"
 }

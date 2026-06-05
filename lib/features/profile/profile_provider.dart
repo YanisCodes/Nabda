@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../data/local/data_providers.dart';
 import '../../data/local/preferences.dart';
 import '../../data/models/app_language.dart';
 import '../home/home_provider.dart';
@@ -51,6 +52,7 @@ class ProfileNotifier extends Notifier<ProfileState> {
     final prefs = ref.read(preferencesProvider);
     await prefs.setCity(state.city!);
     await prefs.setLanguage(state.language);
+    ref.read(localeProvider.notifier).state = languageToLocale(state.language);
     ref.invalidate(homeProvider);
     state = state.copyWith(isSaving: false);
   }

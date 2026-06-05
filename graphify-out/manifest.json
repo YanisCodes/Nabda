@@ -1,7 +1,7 @@
 {
   ".claude/settings.local.json": {
-    "mtime": 1780690775.9760923,
-    "ast_hash": "30ae54bb2cb893e54239213f8b75d1aa",
+    "mtime": 1780693207.8467464,
+    "ast_hash": "54d1385af7418840e87bd81d77090cc8",
     "semantic_hash": ""
   },
   "android/app/build.gradle.kts": {
@@ -85,8 +85,8 @@
     "semantic_hash": "5e716253dcfcdd5e0e59842cea2afc5f"
   },
   "lib/main.dart": {
-    "mtime": 1780689877.5095959,
-    "ast_hash": "0b9b0e97791c968e5511a8b02df50ab8",
+    "mtime": 1780693401.8699067,
+    "ast_hash": "bc53d20d4f19f7876bf4bdd42463bda8",
     "semantic_hash": ""
   },
   "linux/flutter/generated_plugin_registrant.cc": {
@@ -260,8 +260,8 @@
     "semantic_hash": "3eeabdf044c833113bed5fd28282c849"
   },
   "todo.md": {
-    "mtime": 1780691337.499476,
-    "ast_hash": "db04e2a061d5608a074e3887672ca483",
+    "mtime": 1780693418.349179,
+    "ast_hash": "089995f29a90701920092af9768ded15",
     "semantic_hash": ""
   },
   "web/index.html": {
@@ -505,8 +505,8 @@
     "semantic_hash": ""
   },
   "lib/features/explore/explore_provider.dart": {
-    "mtime": 1780690285.4959714,
-    "ast_hash": "7f46b21bc6f4c2731b428a4a7a31053a",
+    "mtime": 1780693391.1370137,
+    "ast_hash": "bf8e14e30b3d6134ac56f71723949fb7",
     "semantic_hash": ""
   },
   "lib/features/explore/explore_screen.dart": {
@@ -520,8 +520,8 @@
     "semantic_hash": ""
   },
   "lib/features/home/home_screen.dart": {
-    "mtime": 1780691319.3709571,
-    "ast_hash": "69083e482cff6547553c5b3d8a87ae8f",
+    "mtime": 1780692878.3545136,
+    "ast_hash": "cee63db3cd67513ec834e8d2b0aa7454",
     "semantic_hash": ""
   },
   "lib/features/onboarding/onboarding_provider.dart": {
@@ -535,12 +535,12 @@
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations.dart": {
-    "mtime": 1780691047.3404016,
+    "mtime": 1780693467.1280162,
     "ast_hash": "f7eff58c9d2421ef75fe31114fbbf821",
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations_fr.dart": {
-    "mtime": 1780691047.199404,
+    "mtime": 1780693466.9914446,
     "ast_hash": "1737d740190a323f9829c2853a13a213",
     "semantic_hash": ""
   },
@@ -550,13 +550,63 @@
     "semantic_hash": ""
   },
   "lib/features/home/home_provider.dart": {
-    "mtime": 1780691263.3380442,
-    "ast_hash": "b8112c2bb74aa07d501aa2919b899c4a",
+    "mtime": 1780693384.8884244,
+    "ast_hash": "7986fe1e0f3a0a59afd31b3aaa52ae48",
     "semantic_hash": ""
   },
   "lib/features/home/widgets/section_header.dart": {
     "mtime": 1780691270.9342003,
     "ast_hash": "71d6fa093cb1b78773e55d4e4bf811dc",
+    "semantic_hash": ""
+  },
+  "lib/data/local/daos/centers_dao.dart": {
+    "mtime": 1780693173.7169456,
+    "ast_hash": "39d16513dd23ba06b8cc86513d46e837",
+    "semantic_hash": ""
+  },
+  "lib/data/local/daos/centers_dao.g.dart": {
+    "mtime": 1780693362.680432,
+    "ast_hash": "a9fbc8eb4f26eccabf8bca81602fa89b",
+    "semantic_hash": ""
+  },
+  "lib/data/local/daos/events_dao.dart": {
+    "mtime": 1780693168.5709128,
+    "ast_hash": "a38a26ddcc0b3eff589bdc55ffe475ab",
+    "semantic_hash": ""
+  },
+  "lib/data/local/daos/events_dao.g.dart": {
+    "mtime": 1780693362.680432,
+    "ast_hash": "4d42f5ad852abd4e2cf73c11d284043c",
+    "semantic_hash": ""
+  },
+  "lib/data/local/data_providers.dart": {
+    "mtime": 1780693178.2841413,
+    "ast_hash": "aef1e29acaa51c56c7df1de41b8e4b00",
+    "semantic_hash": ""
+  },
+  "lib/data/local/database.dart": {
+    "mtime": 1780693335.7629576,
+    "ast_hash": "94ae763c51b0731ba8d8dd6a06f423da",
+    "semantic_hash": ""
+  },
+  "lib/data/local/database.g.dart": {
+    "mtime": 1780693362.6814196,
+    "ast_hash": "6ed708e37b8345ef0284b6575bd24a03",
+    "semantic_hash": ""
+  },
+  "lib/features/map/map_screen.dart": {
+    "mtime": 1780692865.7525175,
+    "ast_hash": "398e0641f8dc6aca325bd21c1efe6411",
+    "semantic_hash": ""
+  },
+  "lib/features/profile/profile_provider.dart": {
+    "mtime": 1780692573.5763733,
+    "ast_hash": "2b02764ccc1633ce123ad1949edf05cf",
+    "semantic_hash": ""
+  },
+  "lib/features/profile/profile_screen.dart": {
+    "mtime": 1780692600.4176311,
+    "ast_hash": "a35a39fcc6cf7b125cfdf31ea63bf0b9",
     "semantic_hash": ""
   }
 }

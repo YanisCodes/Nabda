@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
+import '../../data/sync/sync_service.dart';
+import '../../l10n/app_localizations.dart';
 import '../event_detail/event_detail_screen.dart';
 import '../explore/explore_screen.dart';
 import '../explore/widgets/event_card.dart';
@@ -28,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -40,21 +44,21 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home_rounded),
-            label: 'Accueil',
+            icon: const Icon(Icons.home_outlined),
+            activeIcon: const Icon(Icons.home_rounded),
+            label: l10n.navHome,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore_outlined),
-            activeIcon: Icon(Icons.explore_rounded),
-            label: 'Explorer',
+            icon: const Icon(Icons.explore_outlined),
+            activeIcon: const Icon(Icons.explore_rounded),
+            label: l10n.navExplore,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_outlined),
-            activeIcon: Icon(Icons.map_rounded),
-            label: 'Carte',
+            icon: const Icon(Icons.map_outlined),
+            activeIcon: const Icon(Icons.map_rounded),
+            label: l10n.navMap,
           ),
         ],
       ),
@@ -71,6 +75,7 @@ class _HomeContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(homeProvider);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -87,26 +92,30 @@ class _HomeContent extends ConsumerWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _GreetingBanner(
-              city: state.city,
-              showFallback: !state.cityHasEvents && state.upcomingEvents.isNotEmpty,
-            ),
-            SectionHeader(
-              title: 'Cette semaine',
-              onSeeAll: onGoToExplore,
-            ),
-            _EventsSection(
-              events: state.upcomingEvents,
-              onGoToExplore: onGoToExplore,
-            ),
-            SectionHeader(title: 'Centres proches'),
-            _CentersSection(centers: state.centers),
-            const SizedBox(height: 24),
-          ],
+      body: RefreshIndicator(
+        onRefresh: () => ref.read(syncServiceProvider.notifier).syncNow(),
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _GreetingBanner(
+                city: state.city,
+                showFallback: !state.cityHasEvents && state.upcomingEvents.isNotEmpty,
+              ),
+              SectionHeader(
+                title: l10n.sectionThisWeek,
+                onSeeAll: onGoToExplore,
+              ),
+              _EventsSection(
+                events: state.upcomingEvents,
+                onGoToExplore: onGoToExplore,
+              ),
+              SectionHeader(title: l10n.sectionNearbyCenters),
+              _CentersSection(centers: state.centers),
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );
@@ -123,13 +132,15 @@ class _GreetingBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 20, 16, 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            city.isNotEmpty ? 'Bonjour, $city !' : 'Bonjour !',
+            city.isNotEmpty ? l10n.greetingWithCity(city) : l10n.greetingNoCity,
             style: theme.textTheme.headlineMedium?.copyWith(
               color: AppColors.textPrimary,
               fontWeight: FontWeight.w700,
@@ -138,9 +149,9 @@ class _GreetingBanner extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            showFallback
-                ? 'Pas encore d\'événements à $city.\nVoici les prochains événements disponibles.'
-                : 'Découvrez les opportunités ODEJ près de chez vous.',
+            showFallback && city.isNotEmpty
+                ? l10n.homeSubtitleFallback(city)
+                : l10n.homeSubtitle,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: AppColors.textSecondary,
               height: 1.5,
@@ -164,11 +175,13 @@ class _EventsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     if (events.isEmpty) {
       return _EmptySection(
         icon: Icons.event_busy_rounded,
-        message: 'Aucun événement disponible pour l\'instant.',
-        actionLabel: 'Explorer tout',
+        message: l10n.noEventsAvailable,
+        actionLabel: l10n.btnExploreAll,
         onAction: onGoToExplore,
       );
     }
@@ -199,10 +212,12 @@ class _CentersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     if (centers.isEmpty) {
-      return const _EmptySection(
+      return _EmptySection(
         icon: Icons.business_rounded,
-        message: 'Aucun centre trouvé.',
+        message: l10n.noCentersFound,
       );
     }
     return Column(

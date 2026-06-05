@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/wilayas.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/app_language.dart';
+import '../../l10n/app_localizations.dart';
 import '../home/home_screen.dart';
 import 'onboarding_provider.dart';
 
@@ -13,6 +14,7 @@ class OnboardingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(onboardingProvider);
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -23,17 +25,20 @@ class OnboardingScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 48),
-              _Header(theme: theme),
+              _Header(theme: theme, subtitle: l10n.onboardingSubtitle),
               const SizedBox(height: 48),
-              _SectionLabel(label: 'Votre ville', theme: theme),
+              _SectionLabel(label: l10n.labelYourCity, theme: theme),
               const SizedBox(height: 12),
-              _CityDropdown(selectedCity: state.city),
+              _CityDropdown(
+                selectedCity: state.city,
+                hint: l10n.hintSelectWilaya,
+              ),
               const SizedBox(height: 32),
-              _SectionLabel(label: 'Votre langue', theme: theme),
+              _SectionLabel(label: l10n.labelYourLanguage, theme: theme),
               const SizedBox(height: 12),
               _LanguageSelector(selectedLanguage: state.language),
               const SizedBox(height: 48),
-              _StartButton(state: state),
+              _StartButton(state: state, label: l10n.btnStart),
               const SizedBox(height: 32),
             ],
           ),
@@ -44,8 +49,9 @@ class OnboardingScreen extends ConsumerWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({required this.theme});
+  const _Header({required this.theme, required this.subtitle});
   final ThemeData theme;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +83,7 @@ class _Header extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Personnalisez votre expérience\npour découvrir les opportunités près de chez vous.',
+          subtitle,
           style: theme.textTheme.bodyMedium?.copyWith(
             color: AppColors.textSecondary,
             height: 1.5,
@@ -107,8 +113,9 @@ class _SectionLabel extends StatelessWidget {
 }
 
 class _CityDropdown extends ConsumerWidget {
-  const _CityDropdown({required this.selectedCity});
+  const _CityDropdown({required this.selectedCity, required this.hint});
   final String? selectedCity;
+  final String hint;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -135,9 +142,10 @@ class _CityDropdown extends ConsumerWidget {
                 color: AppColors.textPrimary,
                 fontSize: 15,
               ),
-              hint: const Text(
-                'Sélectionnez une wilaya',
-                style: TextStyle(color: AppColors.textDisabled, fontSize: 15),
+              hint: Text(
+                hint,
+                style:
+                    const TextStyle(color: AppColors.textDisabled, fontSize: 15),
               ),
               items: kWilayas.map((wilaya) {
                 return DropdownMenuItem<String>(
@@ -232,8 +240,9 @@ class _LangChip extends ConsumerWidget {
 }
 
 class _StartButton extends ConsumerWidget {
-  const _StartButton({required this.state});
+  const _StartButton({required this.state, required this.label});
   final OnboardingState state;
+  final String label;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -257,7 +266,7 @@ class _StartButton extends ConsumerWidget {
                 color: Colors.white,
               ),
             )
-          : const Text('Commencer'),
+          : Text(label),
     );
   }
 }

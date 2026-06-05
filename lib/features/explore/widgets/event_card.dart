@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/models/event.dart';
 import '../../../data/models/event_category.dart';
+import '../../../l10n/app_localizations.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.event, this.onTap});
@@ -132,12 +133,13 @@ class _CategoryBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final (label, color) = switch (category) {
-      EventCategory.formation => ('Formation', const Color(0xFF1565C0)),
-      EventCategory.sport => ('Sport', const Color(0xFF2E7D32)),
-      EventCategory.culture => ('Culture', const Color(0xFF6A1B9A)),
-      EventCategory.ecologie => ('Écologie', AppColors.green),
-      EventCategory.volontariat => ('Volontariat', const Color(0xFFBF360C)),
+      EventCategory.formation => (l10n.categoryFormation, const Color(0xFF1565C0)),
+      EventCategory.sport => (l10n.categorySport, const Color(0xFF2E7D32)),
+      EventCategory.culture => (l10n.categoryCulture, const Color(0xFF6A1B9A)),
+      EventCategory.ecologie => (l10n.categoryEcologie, AppColors.green),
+      EventCategory.volontariat => (l10n.categoryVolontariat, const Color(0xFFBF360C)),
     };
 
     return Container(
@@ -165,6 +167,7 @@ class _PriceBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     final color = isFree ? AppColors.success : AppColors.amber;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -174,7 +177,7 @@ class _PriceBadge extends StatelessWidget {
         border: Border.all(color: color.withValues(alpha: 0.4)),
       ),
       child: Text(
-        isFree ? 'Gratuit' : 'Payant',
+        isFree ? l10n.labelFree : l10n.labelPaid,
         style: TextStyle(
           color: color,
           fontSize: 11,

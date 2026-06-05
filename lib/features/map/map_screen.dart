@@ -8,18 +8,20 @@ import '../../core/theme/app_theme.dart';
 import '../../data/local/mock_repository.dart';
 import '../../data/local/preferences.dart';
 import '../../data/models/center.dart' as model;
+import '../../l10n/app_localizations.dart';
 
 class MapScreen extends ConsumerWidget {
   const MapScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
     final prefs = ref.read(preferencesProvider);
     final centers = MockRepository.getCenters();
     final (initialPos, initialZoom) = _initialView(prefs.city, centers);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Centres ODEJ')),
+      appBar: AppBar(title: Text(l10n.screenTitleMap)),
       body: FlutterMap(
         options: MapOptions(
           initialCenter: initialPos,
@@ -52,7 +54,6 @@ class MapScreen extends ConsumerWidget {
     );
   }
 
-  /// Retourne la position initiale et le zoom selon la ville du profil.
   (LatLng, double) _initialView(String? city, List<model.Center> centers) {
     if (city != null && city.isNotEmpty) {
       final match = centers.where(
@@ -63,7 +64,6 @@ class MapScreen extends ConsumerWidget {
         return (LatLng(c.lat, c.lng), 11.0);
       }
     }
-    // Vue par défaut : nord de l'Algérie — tous les centres visibles
     return (const LatLng(36.3, 2.0), 7.0);
   }
 
@@ -117,6 +117,7 @@ class _CenterSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
@@ -124,7 +125,6 @@ class _CenterSheet extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Poignée
           Center(
             child: Container(
               width: 36,
@@ -136,8 +136,6 @@ class _CenterSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-
-          // Nom
           Text(
             center.name,
             style: theme.textTheme.titleLarge?.copyWith(
@@ -146,22 +144,18 @@ class _CenterSheet extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-
-          // Infos
           _SheetRow(icon: Icons.location_on_outlined, text: center.address),
           const SizedBox(height: 8),
           _SheetRow(icon: Icons.access_time_outlined, text: center.hours),
           const SizedBox(height: 8),
           _SheetRow(icon: Icons.phone_outlined, text: center.phone),
           const SizedBox(height: 20),
-
-          // Bouton contact
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
               onPressed: () => _dialPhone(context, center.phone),
               icon: const Icon(Icons.phone_rounded, size: 18),
-              label: const Text('Contacter'),
+              label: Text(l10n.btnContact),
             ),
           ),
         ],
@@ -174,8 +168,9 @@ class _CenterSheet extends StatelessWidget {
     if (!await launchUrl(uri)) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Impossible d\'ouvrir l\'application téléphone'),
+          SnackBar(
+            content:
+                Text(AppLocalizations.of(context).errorCantOpenPhone),
           ),
         );
       }

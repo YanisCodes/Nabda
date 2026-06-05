@@ -104,11 +104,11 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 10 — Supabase (réseau)
 
-- [ ] **T33** Créer le projet Supabase, exécuter le SQL de création des tables (voir spec.md)
+- [x] **T33** Créer le projet Supabase, exécuter le SQL de création des tables (voir spec.md)
 - [ ] **T34** Insérer 10 événements réels et 5 centres dans Supabase via le dashboard
-- [ ] **T35** Créer `lib/data/remote/supabase_client.dart` et `lib/data/sync/sync_service.dart`
-- [ ] **T36** Logique sync : au démarrage, si `last_sync > 24h` → fetch delta Supabase → upsert SQLite
-- [ ] **T37** Pull-to-refresh sur l'accueil déclenche la sync manuellement
+- [x] **T35** Créer `lib/data/remote/supabase_client.dart` et `lib/data/sync/sync_service.dart`
+- [x] **T36** Logique sync : au démarrage, si `last_sync > 24h` → fetch delta Supabase → upsert SQLite
+- [x] **T37** Pull-to-refresh sur l'accueil déclenche la sync manuellement
 
 **Livrable T33→T37 :** données réelles, sync offline-first complète.
 
@@ -116,10 +116,10 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 11 — Multilingue
 
-- [ ] **T38** Configurer `flutter_localizations` dans `pubspec.yaml` et `main.dart`
-- [ ] **T39** Créer `lib/l10n/app_fr.arb`, `app_ar.arb`, `app_tz.arb` avec toutes les chaînes UI
-- [ ] **T40** Remplacer toutes les strings hardcodées par `AppLocalizations.of(context).xxx`
-- [ ] **T41** Tester le RTL avec la langue arabe
+- [x] **T38** Configurer `flutter_localizations` dans `pubspec.yaml` et `main.dart`
+- [x] **T39** Créer `lib/l10n/app_fr.arb`, `app_ar.arb`, `app_tz.arb` avec toutes les chaînes UI
+- [x] **T40** Remplacer toutes les strings hardcodées par `AppLocalizations.of(context).xxx`
+- [x] **T41** Tester le RTL avec la langue arabe
 
 **Livrable T38→T41 :** app complètement traduite, RTL fonctionnel en arabe.
 

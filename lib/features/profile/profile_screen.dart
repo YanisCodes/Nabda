@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/wilayas.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/app_language.dart';
+import '../../l10n/app_localizations.dart';
 import '../onboarding/onboarding_screen.dart';
 import 'profile_provider.dart';
 
@@ -13,25 +14,29 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(profileProvider);
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Mon profil')),
+      appBar: AppBar(title: Text(l10n.screenTitleProfile)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 24),
-            _SectionLabel(label: 'Votre ville', theme: theme),
+            _SectionLabel(label: l10n.labelYourCity, theme: theme),
             const SizedBox(height: 12),
-            _CityDropdown(selectedCity: state.city),
+            _CityDropdown(
+              selectedCity: state.city,
+              hint: l10n.hintSelectWilaya,
+            ),
             const SizedBox(height: 28),
-            _SectionLabel(label: 'Votre langue', theme: theme),
+            _SectionLabel(label: l10n.labelYourLanguage, theme: theme),
             const SizedBox(height: 12),
             _LanguageSelector(selectedLanguage: state.language),
             const SizedBox(height: 36),
-            _SaveButton(state: state),
+            _SaveButton(state: state, label: l10n.btnSave),
             const SizedBox(height: 32),
             const Divider(),
             const SizedBox(height: 24),
@@ -62,8 +67,9 @@ class _SectionLabel extends StatelessWidget {
 }
 
 class _CityDropdown extends ConsumerWidget {
-  const _CityDropdown({required this.selectedCity});
+  const _CityDropdown({required this.selectedCity, required this.hint});
   final String? selectedCity;
+  final String hint;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -90,9 +96,10 @@ class _CityDropdown extends ConsumerWidget {
                 color: AppColors.textPrimary,
                 fontSize: 15,
               ),
-              hint: const Text(
-                'Sélectionnez une wilaya',
-                style: TextStyle(color: AppColors.textDisabled, fontSize: 15),
+              hint: Text(
+                hint,
+                style:
+                    const TextStyle(color: AppColors.textDisabled, fontSize: 15),
               ),
               items: kWilayas.map((w) {
                 return DropdownMenuItem<String>(
@@ -186,8 +193,9 @@ class _LangChip extends ConsumerWidget {
 }
 
 class _SaveButton extends ConsumerWidget {
-  const _SaveButton({required this.state});
+  const _SaveButton({required this.state, required this.label});
   final ProfileState state;
+  final String label;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -208,7 +216,7 @@ class _SaveButton extends ConsumerWidget {
                 color: Colors.white,
               ),
             )
-          : const Text('Enregistrer les modifications'),
+          : Text(label),
     );
   }
 }
@@ -218,11 +226,13 @@ class _DangerZone extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Zone de danger',
+          l10n.sectionDangerZone,
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                 color: AppColors.textSecondary,
                 fontWeight: FontWeight.w600,
@@ -233,9 +243,9 @@ class _DangerZone extends ConsumerWidget {
           onPressed: () => _confirmClear(context, ref),
           icon: const Icon(Icons.delete_outline_rounded,
               size: 18, color: AppColors.error),
-          label: const Text(
-            'Effacer les données locales',
-            style: TextStyle(color: AppColors.error),
+          label: Text(
+            l10n.btnClearData,
+            style: const TextStyle(color: AppColors.error),
           ),
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: AppColors.error, width: 1),
@@ -246,24 +256,23 @@ class _DangerZone extends ConsumerWidget {
   }
 
   void _confirmClear(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+
     showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Effacer les données ?'),
-        content: const Text(
-          'Votre ville et vos préférences seront supprimées. '
-          'Vous serez redirigé vers l\'accueil de configuration.',
-        ),
+        title: Text(l10n.dialogClearTitle),
+        content: Text(l10n.dialogClearContent),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text('Annuler'),
+            child: Text(l10n.actionCancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text(
-              'Effacer',
-              style: TextStyle(color: AppColors.error),
+            child: Text(
+              l10n.actionDelete,
+              style: const TextStyle(color: AppColors.error),
             ),
           ),
         ],

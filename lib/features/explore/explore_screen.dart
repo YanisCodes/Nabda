@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/mock_data.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/event_category.dart';
+import '../../l10n/app_localizations.dart';
 import '../event_detail/event_detail_screen.dart';
 import 'explore_provider.dart';
 import 'widgets/event_card.dart';
@@ -14,18 +15,19 @@ class ExploreScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(exploreProvider);
+    final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Explorer'),
+        title: Text(l10n.screenTitleExplore),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(52),
           child: _CategoryChips(selected: state.selectedCategory),
         ),
       ),
       body: state.events.isEmpty
-          ? _EmptyState(theme: theme)
+          ? _EmptyState(theme: theme, message: l10n.noEventsInCategory)
           : ListView.builder(
               padding: const EdgeInsets.only(top: 8, bottom: 16),
               itemCount: state.events.length,
@@ -50,6 +52,8 @@ class _CategoryChips extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+
     return SizedBox(
       height: 52,
       child: ListView(
@@ -57,7 +61,7 @@ class _CategoryChips extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         children: [
           _Chip(
-            label: 'Tout',
+            label: l10n.chipAll,
             isSelected: selected == null,
             onTap: () =>
                 ref.read(exploreProvider.notifier).selectCategory(null),
@@ -65,7 +69,7 @@ class _CategoryChips extends ConsumerWidget {
           ...kCategories.map((cat) => Padding(
                 padding: const EdgeInsets.only(left: 8),
                 child: _Chip(
-                  label: cat.nameFr,
+                  label: _categoryLabel(l10n, cat.id),
                   isSelected: selected == cat.id,
                   onTap: () => ref
                       .read(exploreProvider.notifier)
@@ -77,6 +81,15 @@ class _CategoryChips extends ConsumerWidget {
     );
   }
 }
+
+String _categoryLabel(AppLocalizations l10n, EventCategory cat) =>
+    switch (cat) {
+      EventCategory.formation => l10n.categoryFormation,
+      EventCategory.sport => l10n.categorySport,
+      EventCategory.culture => l10n.categoryCulture,
+      EventCategory.ecologie => l10n.categoryEcologie,
+      EventCategory.volontariat => l10n.categoryVolontariat,
+    };
 
 class _Chip extends StatelessWidget {
   const _Chip({
@@ -120,8 +133,9 @@ class _Chip extends StatelessWidget {
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState({required this.theme});
+  const _EmptyState({required this.theme, required this.message});
   final ThemeData theme;
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +150,7 @@ class _EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Aucun événement dans cette catégorie',
+            message,
             style: theme.textTheme.bodyMedium?.copyWith(
               color: AppColors.textSecondary,
             ),

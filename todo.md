@@ -53,9 +53,9 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 5 — Détail événement
 
-- [ ] **T17** Créer `lib/features/event_detail/event_detail_screen.dart` : affiche tous les champs d'un Event (image hero + titre + date + description + ville)
-- [ ] **T18** Ajouter navigation Explorer → Détail (route avec l'objet Event)
-- [ ] **T19** Bouton "Contacter" : `url_launcher` pour ouvrir un numéro de téléphone
+- [x] **T17** Créer `lib/features/event_detail/event_detail_screen.dart` : affiche tous les champs d'un Event (image hero + titre + date + description + ville)
+- [x] **T18** Ajouter navigation Explorer → Détail (route avec l'objet Event)
+- [x] **T19** Bouton "Contacter" : `url_launcher` pour ouvrir un numéro de téléphone
 
 **Livrable T17→T19 :** navigation complète Explorer → Détail → retour.
 
@@ -63,9 +63,9 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 6 — Accueil
 
-- [ ] **T20** Créer `lib/features/home/home_provider.dart` : provider qui filtre les événements par ville du profil + les 3 plus proches dans le temps
-- [ ] **T21** Créer `lib/features/home/home_screen.dart` : bandeau ville, section "Cette semaine" (5 events max), section "Centres" (3 centers), boutons Explorer/Carte
-- [ ] **T22** Créer `lib/features/home/widgets/section_header.dart` : header réutilisable avec titre + lien "Voir tout"
+- [x] **T20** Créer `lib/features/home/home_provider.dart` : provider qui filtre les événements par ville du profil + les 3 plus proches dans le temps
+- [x] **T21** Créer `lib/features/home/home_screen.dart` : bandeau ville, section "Cette semaine" (5 events max), section "Centres" (3 centers), boutons Explorer/Carte
+- [x] **T22** Créer `lib/features/home/widgets/section_header.dart` : header réutilisable avec titre + lien "Voir tout"
 
 **Livrable T20→T22 :** accueil avec données filtrées par ville du profil.
 

@@ -36,6 +36,9 @@ dependencies:
   # Images
   cached_network_image: ^3.4.1
 
+  # Liens externes (téléphone, email)
+  url_launcher: ^6.3.1
+
   # UI
   cupertino_icons: ^1.0.8
 

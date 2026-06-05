@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/mock_data.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/event_category.dart';
+import '../event_detail/event_detail_screen.dart';
 import 'explore_provider.dart';
 import 'widgets/event_card.dart';
 
@@ -28,7 +29,16 @@ class ExploreScreen extends ConsumerWidget {
           : ListView.builder(
               padding: const EdgeInsets.only(top: 8, bottom: 16),
               itemCount: state.events.length,
-              itemBuilder: (_, i) => EventCard(event: state.events[i]),
+              itemBuilder: (context, i) => EventCard(
+                event: state.events[i],
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        EventDetailScreen(event: state.events[i]),
+                  ),
+                ),
+              ),
             ),
     );
   }

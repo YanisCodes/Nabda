@@ -1,18 +1,12 @@
-# Graph Report - nabda-better  (2026-06-05)
+# Graph Report - .  (2026-06-05)
 
 ## Corpus Check
-- 64 files · ~23,244 words
-- Verdict: corpus is large enough that graph structure adds value.
+- Corpus is ~19,395 words - fits in a single context window. You may not need a graph.
 
 ## Summary
-- 525 nodes · 607 edges · 43 communities (34 shown, 9 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.86)
-- Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `2d858219`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
+- 284 nodes · 358 edges · 39 communities (27 shown, 12 thin omitted)
+- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 43 edges (avg confidence: 0.88)
+- Token cost: 12,500 input · 3,800 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Windows Desktop Runner|Windows Desktop Runner]]
@@ -46,33 +40,30 @@
 - [[_COMMUNITY_Misc Platform Code|Misc Platform Code]]
 - [[_COMMUNITY_Misc Platform Code|Misc Platform Code]]
 - [[_COMMUNITY_Misc Platform Code|Misc Platform Code]]
-- [[_COMMUNITY_Community 39|Community 39]]
-- [[_COMMUNITY_Community 40|Community 40]]
-- [[_COMMUNITY_Community 41|Community 41]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `OTEJ Link — Projet personnel` - 18 edges
-2. `OTEJ Link — Todo MVP` - 14 edges
-3. `OTEJ Link — Instructions pour Claude` - 12 edges
-4. `_` - 12 edges
-5. `OTEJ Link — Spec MVP` - 11 edges
-6. `Create()` - 10 edges
-7. `MessageHandler()` - 10 edges
-8. `WndProc()` - 9 edges
-9. `Fonctionnalités principales` - 8 edges
-10. `preferencesProvider` - 7 edges
+1. `spec.md — OTEJ Link MVP Specification` - 20 edges
+2. `todo.md — MVP Development Task List` - 12 edges
+3. `Create()` - 10 edges
+4. `MessageHandler()` - 10 edges
+5. `CLAUDE.md — Project Instructions for Claude` - 10 edges
+6. `WndProc()` - 9 edges
+7. `_MyApplication` - 7 edges
+8. `HWND` - 7 edges
+9. `WindowClassRegistrar` - 7 edges
+10. `Destroy()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `wWinMain()` --calls--> `CreateAndAttachConsole()`  [INFERRED]
-  windows/runner/main.cpp → windows/runner/utils.cpp
-- `build` --references--> `preferencesProvider`  [EXTRACTED]
-  lib/features/home/home_screen.dart → lib/data/local/preferences.dart
-- `_HomePlaceholder` --references--> `preferencesProvider`  [EXTRACTED]
-  lib/features/home/home_screen.dart → lib/data/local/preferences.dart
-- `build` --references--> `preferencesProvider`  [EXTRACTED]
-  lib/main.dart → lib/data/local/preferences.dart
-- `complete` --references--> `preferencesProvider`  [EXTRACTED]
-  lib/features/onboarding/onboarding_provider.dart → lib/data/local/preferences.dart
+- `ic_launcher.png (Android mipmap-hdpi, ~72dp)` --semantically_similar_to--> `ic_launcher.png (Android mipmap-mdpi, ~48dp)`  [INFERRED] [semantically similar]
+  C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-hdpi/ic_launcher.png → C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+- `ic_launcher.png (Android mipmap-hdpi, ~72dp)` --semantically_similar_to--> `ic_launcher.png (Android mipmap-xhdpi, ~96dp)`  [INFERRED] [semantically similar]
+  C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-hdpi/ic_launcher.png → C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+- `ic_launcher.png (Android mipmap-hdpi, ~72dp)` --semantically_similar_to--> `ic_launcher.png (Android mipmap-xxhdpi, ~144dp)`  [INFERRED] [semantically similar]
+  C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-hdpi/ic_launcher.png → C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+- `ic_launcher.png (Android mipmap-hdpi, ~72dp)` --semantically_similar_to--> `ic_launcher.png (Android mipmap-xxxhdpi, ~192dp)`  [INFERRED] [semantically similar]
+  C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-hdpi/ic_launcher.png → C:/Users/HP/Desktop/school ts 2/projects/nabda-better/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+- `OnCreate()` --calls--> `RegisterPlugins()`  [INFERRED]
+  windows/runner/flutter_window.cpp → windows/flutter/generated_plugin_registrant.cc
 
 ## Import Cycles
 - None detected.
@@ -88,15 +79,15 @@
 - **Web PWA Icons (favicon + 192/512 standard + 192/512 maskable)** — web_favicon, web_icon_192, web_icon_512, web_icon_maskable_192, web_icon_maskable_512 [EXTRACTED 1.00]
 - **All Flutter Default Boilerplate Icons Across All Platforms** — mipmap_mdpi_ic_launcher, mipmap_hdpi_ic_launcher, mipmap_xhdpi_ic_launcher, mipmap_xxhdpi_ic_launcher, mipmap_xxxhdpi_ic_launcher, ios_icon_app_1024x1024_1x, ios_icon_app_20x20_1x, ios_icon_app_20x20_2x, ios_icon_app_40x40_1x, ios_icon_app_60x60_2x, ios_launchimage, ios_launchimage_2x, ios_launchimage_3x, macos_app_icon_128, macos_app_icon_256, macos_app_icon_512, macos_app_icon_1024, web_favicon, web_icon_192, web_icon_512, web_icon_maskable_192, web_icon_maskable_512 [INFERRED 0.95]
 
-## Communities (43 total, 9 thin omitted)
+## Communities (39 total, 12 thin omitted)
 
 ### Community 0 - "Windows Desktop Runner"
-Cohesion: 0.09
-Nodes (34): RegisterPlugins(), PluginRegistry, Point, RECT, OnCreate(), Create(), Destroy(), EnableFullDpiSupportIfAvailable() (+26 more)
+Cohesion: 0.10
+Nodes (32): Point, RECT, OnCreate(), Create(), Destroy(), EnableFullDpiSupportIfAvailable(), GetClientArea(), GetHandle() (+24 more)
 
 ### Community 1 - "OTEJ Link Product & Architecture"
-Cohesion: 0.05
-Nodes (42): ../../core/constants/mock_data.dart, Event, exploreProvider, build, _CategoryChips, _Chip, _EmptyState, ExploreScreen (+34 more)
+Cohesion: 0.18
+Nodes (29): ODEJ Admin Dashboard — Content Management Without Code, CachedNetworkImage — Automatic Image Caching, No Re-download, CLAUDE.md — Project Instructions for Claude, Drift SQLite Local Database, Event Detail Feature — Full Info + Contact Button + Map Link, Explore Feature — Filtered Event List by Category/City/Date, Home Feature — Upcoming Events by City + Nearby Centers + Quick Nav, Map Centers Feature — flutter_map with ODEJ Center Pins + BottomSheet (+21 more)
 
 ### Community 2 - "Linux GTK Plugin Registry"
 Cohesion: 0.11
@@ -107,20 +98,20 @@ Cohesion: 0.08
 Nodes (24): static const Color, static const TextTheme, static ThemeData get, amber, amberDark, AppColors, AppTheme, bgDark (+16 more)
 
 ### Community 4 - "Cross-Platform App Icons"
-Cohesion: 0.33
-Nodes (6): Android Launcher Icons Group, Flutter Default Launcher Icons (Boilerplate Blue Flutter Logo), iOS App Icons Group, iOS Launch Images Group, macOS App Icons Group, Web App Icons Group
+Cohesion: 0.13
+Nodes (22): Flutter Default Launcher Icons (Boilerplate Blue Flutter Logo), iOS App Icons Group, Icon-App-1024x1024@1x.png (iOS App Store icon), Icon-App-20x20@1x.png (iOS notification icon 1x), Icon-App-20x20@2x.png (iOS notification icon 2x), Icon-App-40x40@1x.png (iOS spotlight icon 1x), Icon-App-60x60@2x.png (iOS home screen icon 2x), iOS Launch Images Group (+14 more)
 
 ### Community 5 - "Flutter App Entry Point"
-Cohesion: 0.05
-Nodes (42): AppLanguage get, core/theme/app_theme.dart, data/local/preferences.dart, ../explore/explore_screen.dart, features/home/home_screen.dart, features/onboarding/onboarding_screen.dart, build, createState (+34 more)
+Cohesion: 0.16
+Nodes (13): core/theme/app_theme.dart, _AppLogo, build, main, OtejApp, _SplashScreen, package:flutter/material.dart, package:flutter_riverpod/flutter_riverpod.dart (+5 more)
 
 ### Community 6 - "iOS / macOS AppDelegate"
 Cohesion: 0.18
 Nodes (8): Any, FlutterAppDelegate, Bool, AppDelegate, Bool, AppDelegate, NSApplication, UIApplication
 
 ### Community 7 - "Windows Runner Utilities"
-Cohesion: 0.23
-Nodes (9): _In_, _In_opt_, wWinMain(), CreateAndAttachConsole(), GetCommandLineArguments(), Utf8FromUtf16(), vector, string (+1 more)
+Cohesion: 0.22
+Nodes (9): _In_, _In_opt_, wWinMain(), CreateAndAttachConsole(), GetCommandLineArguments(), Utf8FromUtf16(), string, vector (+1 more)
 
 ### Community 8 - "PWA Web Manifest"
 Cohesion: 0.18
@@ -139,9 +130,8 @@ Cohesion: 0.29
 Nodes (3): RunnerTests, RunnerTests, XCTestCase
 
 ### Community 12 - "Android Launcher Icons"
-Cohesion: 0.07
-Nodes (34): bool get, ConsumerWidget, ../../core/constants/wilayas.dart, fr,
-  ar,, ../home/home_screen.dart, _HomePlaceholder, AppLanguage, code (+26 more)
+Cohesion: 0.60
+Nodes (6): Android Launcher Icons Group, ic_launcher.png (Android mipmap-hdpi, ~72dp), ic_launcher.png (Android mipmap-mdpi, ~48dp), ic_launcher.png (Android mipmap-xhdpi, ~96dp), ic_launcher.png (Android mipmap-xxhdpi, ~144dp), ic_launcher.png (Android mipmap-xxxhdpi, ~192dp)
 
 ### Community 13 - "iOS LLDB Debug Helper"
 Cohesion: 0.33
@@ -159,60 +149,31 @@ Nodes (4): images, info, author, version
 Cohesion: 0.40
 Nodes (4): images, info, author, version
 
-### Community 20 - "Windows Plugin Registry"
-Cohesion: 0.06
-Nodes (31): app_language.dart, event_category.dart, formation,
-  sport,
-  culture,
-  ecologie,, category, Category, icon, id, localizedName (+23 more)
-
 ### Community 23 - "Linux Build Config"
-Cohesion: 0.07
-Nodes (29): 1. Accueil intelligent, 2. Explorer les opportunités, 3. Carte interactive, 4. Profil utilisateur, 5. Volontariat et engagement, 6. Notifications légères, 7. Interface ODEJ pour mise à jour, Admin dashboard (+21 more)
+Cohesion: 0.67
+Nodes (3): linux/CMakeLists.txt — Linux Root Build Config, linux/flutter/CMakeLists.txt — Linux Flutter Library Build, linux/runner/CMakeLists.txt — Linux Runner Build
 
 ### Community 24 - "Windows Build Config"
-Cohesion: 0.09
-Nodes (25): app_localizations.dart, app_localizations_fr.dart, dart:async, AppLocalizations, _AppLocalizationsDelegate, appName, delegate, AppLocalizationsFr (+17 more)
-
-### Community 25 - "Misc Platform Code"
-Cohesion: 0.08
-Nodes (24): kCategories, kMockCenters, kMockEvents, code, kWilayas, nameAr, nameFr, toString (+16 more)
-
-### Community 31 - "Misc Platform Code"
-Cohesion: 0.09
-Nodes (21): Accueil, Architecture, Carte centres, `categories`, Ce qui n'est PAS dans le MVP, `centers` (centres ODEJ), Contraintes Green Tech, Détail événement (+13 more)
-
-### Community 35 - "Misc Platform Code"
-Cohesion: 0.11
-Nodes (17): DateTime, int get, address, Center, city, copyWith, createdAt, fromJson (+9 more)
-
-### Community 37 - "Misc Platform Code"
-Cohesion: 0.13
-Nodes (14): Backlog v2 (hors MVP), OTEJ Link — Todo MVP, PHASE 10 — Supabase (réseau), PHASE 11 — Multilingue, PHASE 12 — Polish et Green Tech audit, PHASE 1 — Fondations (projet vide → premier écran visible), PHASE 2 — Modèles et données statiques, PHASE 3 — Onboarding (feature la plus simple) (+6 more)
-
-### Community 39 - "Community 39"
-Cohesion: 0.15
-Nodes (12): Approche de dev, Architecture, Context navigation, Contexte du projet, Conventions, Environnement, Fichiers clés, Interdictions (+4 more)
+Cohesion: 0.67
+Nodes (3): windows/CMakeLists.txt — Windows Root Build Config, windows/flutter/CMakeLists.txt — Windows Flutter Library Build, windows/runner/CMakeLists.txt — Windows Runner Build
 
 ## Knowledge Gaps
-- **267 isolated node(s):** `Contexte du projet`, `Objectif`, `Stack`, `Architecture`, `Conventions` (+262 more)
+- **96 isolated node(s):** `allow`, `SBFrame`, `SBDebugger`, `flutter_export_environment.sh script`, `UIApplication` (+91 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `EventCategory` connect `Windows Plugin Registry` to `Misc Platform Code`, `OTEJ Link Product & Architecture`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
-- **Why does `AppLanguage` connect `Android Launcher Icons` to `Windows Plugin Registry`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
-- **What connects `Contexte du projet`, `Objectif`, `Stack` to the rest of the system?**
-  _268 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `OnCreate()` connect `Windows Desktop Runner` to `Windows Flutter Window`, `Windows Plugin Registry`?**
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **What connects `allow`, `SBFrame`, `SBDebugger` to the rest of the system?**
+  _97 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Windows Desktop Runner` be split into smaller, more focused modules?**
-  _Cohesion score 0.08658536585365853 - nodes in this community are weakly interconnected._
-- **Should `OTEJ Link Product & Architecture` be split into smaller, more focused modules?**
-  _Cohesion score 0.05391120507399577 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0953058321479374 - nodes in this community are weakly interconnected._
 - **Should `Linux GTK Plugin Registry` be split into smaller, more focused modules?**
   _Cohesion score 0.10666666666666667 - nodes in this community are weakly interconnected._
 - **Should `Dark Theme System` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Cross-Platform App Icons` be split into smaller, more focused modules?**
+  _Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected._

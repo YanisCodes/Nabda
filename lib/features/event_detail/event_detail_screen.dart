@@ -1,0 +1,402 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../core/theme/app_theme.dart';
+import '../../data/local/mock_repository.dart';
+import '../../data/models/center.dart' as model;
+import '../../data/models/event.dart';
+import '../../data/models/event_category.dart';
+
+class EventDetailScreen extends StatelessWidget {
+  const EventDetailScreen({super.key, required this.event});
+
+  final Event event;
+
+  @override
+  Widget build(BuildContext context) {
+    final center = event.centerId != null
+        ? MockRepository.getCenterById(event.centerId!)
+        : null;
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          _EventSliverAppBar(event: event),
+          SliverToBoxAdapter(
+            child: _EventBody(event: event, center: center),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Header collapsible ───────────────────────────────────────────────────────
+
+class _EventSliverAppBar extends StatelessWidget {
+  const _EventSliverAppBar({required this.event});
+  final Event event;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      expandedHeight: 210,
+      pinned: true,
+      title: Text(
+        event.title,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      flexibleSpace: FlexibleSpaceBar(
+        collapseMode: CollapseMode.pin,
+        background: _CategoryHeader(category: event.category),
+      ),
+    );
+  }
+}
+
+class _CategoryHeader extends StatelessWidget {
+  const _CategoryHeader({required this.category});
+  final EventCategory category;
+
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: _bgColor(category),
+      child: SizedBox.expand(
+        child: Center(
+          child: Icon(
+            _icon(category),
+            size: 80,
+            color: Colors.white.withValues(alpha: 0.18),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Color _bgColor(EventCategory c) => switch (c) {
+        EventCategory.formation => const Color(0xFF1A3A5C),
+        EventCategory.sport => const Color(0xFF1A4A2E),
+        EventCategory.culture => const Color(0xFF3A1A4A),
+        EventCategory.ecologie => const Color(0xFF1A4A20),
+        EventCategory.volontariat => const Color(0xFF4A2A1A),
+      };
+
+  IconData _icon(EventCategory c) => switch (c) {
+        EventCategory.formation => Icons.school_rounded,
+        EventCategory.sport => Icons.sports_soccer_rounded,
+        EventCategory.culture => Icons.theater_comedy_rounded,
+        EventCategory.ecologie => Icons.eco_rounded,
+        EventCategory.volontariat => Icons.volunteer_activism_rounded,
+      };
+}
+
+// ─── Corps scrollable ─────────────────────────────────────────────────────────
+
+class _EventBody extends StatelessWidget {
+  const _EventBody({required this.event, required this.center});
+  final Event event;
+  final model.Center? center;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Titre + badges
+          Text(
+            event.title,
+            style: theme.textTheme.headlineSmall?.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w700,
+              height: 1.3,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              _CategoryBadge(category: event.category),
+              const SizedBox(width: 8),
+              _PriceBadge(isFree: event.isFree),
+            ],
+          ),
+          const SizedBox(height: 20),
+
+          // Infos date + lieu
+          _InfoRow(
+            icon: Icons.calendar_today_outlined,
+            text: _formatDateRange(event),
+          ),
+          const SizedBox(height: 10),
+          _InfoRow(
+            icon: Icons.location_on_outlined,
+            text: event.city,
+          ),
+          const SizedBox(height: 20),
+
+          const Divider(height: 1),
+          const SizedBox(height: 20),
+
+          // Description
+          Text(
+            'À propos',
+            style: theme.textTheme.titleMedium?.copyWith(
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            event.description,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppColors.textSecondary,
+              height: 1.6,
+            ),
+          ),
+
+          // Centre info
+          if (center != null) ...[
+            const SizedBox(height: 24),
+            const Divider(height: 1),
+            const SizedBox(height: 20),
+            _CenterCard(center: center!),
+          ],
+
+          const SizedBox(height: 28),
+
+          // Bouton contact
+          _ContactButton(center: center),
+          const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+
+  String _formatDateRange(Event e) {
+    final start = _fmt(e.dateStart);
+    if (e.dateEnd == null) return start;
+    final end = _fmt(e.dateEnd!);
+    if (start == end) {
+      return '$start · ${_time(e.dateStart)} – ${_time(e.dateEnd!)}';
+    }
+    return '$start – $end';
+  }
+
+  String _fmt(DateTime d) {
+    const months = [
+      'jan', 'fév', 'mar', 'avr', 'mai', 'juin',
+      'juil', 'août', 'sep', 'oct', 'nov', 'déc',
+    ];
+    return '${d.day} ${months[d.month - 1]} ${d.year}';
+  }
+
+  String _time(DateTime d) =>
+      '${d.hour}h${d.minute.toString().padLeft(2, '0')}';
+}
+
+// ─── Widgets internes ─────────────────────────────────────────────────────────
+
+class _InfoRow extends StatelessWidget {
+  const _InfoRow({required this.icon, required this.text});
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, size: 16, color: AppColors.green),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _CenterCard extends StatelessWidget {
+  const _CenterCard({required this.center});
+  final model.Center center;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Centre organisateur',
+          style: theme.textTheme.titleMedium?.copyWith(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: AppColors.surfaceVariantDark,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColors.borderDark),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                center.name,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 8),
+              _CenterRow(
+                icon: Icons.location_on_outlined,
+                text: center.address,
+              ),
+              const SizedBox(height: 6),
+              _CenterRow(
+                icon: Icons.access_time_outlined,
+                text: center.hours,
+              ),
+              const SizedBox(height: 6),
+              _CenterRow(
+                icon: Icons.phone_outlined,
+                text: center.phone,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _CenterRow extends StatelessWidget {
+  const _CenterRow({required this.icon, required this.text});
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(icon, size: 14, color: AppColors.textDisabled),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _ContactButton extends StatelessWidget {
+  const _ContactButton({required this.center});
+  final model.Center? center;
+
+  @override
+  Widget build(BuildContext context) {
+    final phone = center?.phone;
+
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        onPressed: phone != null ? () => _dialPhone(context, phone) : null,
+        icon: const Icon(Icons.phone_rounded, size: 18),
+        label: const Text('Contacter le centre'),
+      ),
+    );
+  }
+
+  Future<void> _dialPhone(BuildContext context, String phone) async {
+    final cleaned = phone.replaceAll(' ', '');
+    final uri = Uri(scheme: 'tel', path: cleaned);
+    if (!await launchUrl(uri)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Impossible d\'ouvrir l\'application téléphone'),
+          ),
+        );
+      }
+    }
+  }
+}
+
+// ─── Badges (dupliqués depuis event_card pour encapsulation) ─────────────────
+
+class _CategoryBadge extends StatelessWidget {
+  const _CategoryBadge({required this.category});
+  final EventCategory category;
+
+  @override
+  Widget build(BuildContext context) {
+    final (label, color) = switch (category) {
+      EventCategory.formation => ('Formation', const Color(0xFF1565C0)),
+      EventCategory.sport => ('Sport', const Color(0xFF2E7D32)),
+      EventCategory.culture => ('Culture', const Color(0xFF6A1B9A)),
+      EventCategory.ecologie => ('Écologie', AppColors.green),
+      EventCategory.volontariat => ('Volontariat', const Color(0xFFBF360C)),
+    };
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.18),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          color: color,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}
+
+class _PriceBadge extends StatelessWidget {
+  const _PriceBadge({required this.isFree});
+  final bool isFree;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = isFree ? AppColors.success : AppColors.amber;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
+      ),
+      child: Text(
+        isFree ? 'Gratuit' : 'Payant',
+        style: TextStyle(
+          color: color,
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}

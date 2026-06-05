@@ -1,0 +1,7 @@
+{
+  "@@locale": "fr",
+  "appName": "OTEJ Link",
+  "@appName": {
+    "description": "Nom de l'application"
+  }
+}

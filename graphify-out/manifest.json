@@ -1,0 +1,462 @@
+{
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\.claude\\settings.local.json": {
+    "mtime": 1780688560.6620276,
+    "ast_hash": "84162d9a659c0f394361171b2c380a0e",
+    "semantic_hash": "84162d9a659c0f394361171b2c380a0e"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\build.gradle.kts": {
+    "mtime": 1780687832.9261394,
+    "ast_hash": "75ec75cc8e9f662524944cd5592dd6c0",
+    "semantic_hash": "75ec75cc8e9f662524944cd5592dd6c0"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\java\\io\\flutter\\plugins\\GeneratedPluginRegistrant.java": {
+    "mtime": 1780687896.2034535,
+    "ast_hash": "34e4b7270868027b0ce8ea3f51a679ef",
+    "semantic_hash": "34e4b7270868027b0ce8ea3f51a679ef"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\kotlin\\com\\otej\\otej_link\\MainActivity.kt": {
+    "mtime": 1780687832.9411387,
+    "ast_hash": "28b41661f44642480fec9497bf8e4df2",
+    "semantic_hash": "28b41661f44642480fec9497bf8e4df2"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\build.gradle.kts": {
+    "mtime": 1780687832.9521487,
+    "ast_hash": "803fe22651fbe96ed401eb0b66a492d1",
+    "semantic_hash": "803fe22651fbe96ed401eb0b66a492d1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\gradlew": {
+    "mtime": 1780687834.4036553,
+    "ast_hash": "7f1cd7eb3f75a1dc85cd37753972a6e2",
+    "semantic_hash": "7f1cd7eb3f75a1dc85cd37753972a6e2"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\settings.gradle.kts": {
+    "mtime": 1780687833.0951374,
+    "ast_hash": "f276a44edd917afd836899357fdae60e",
+    "semantic_hash": "f276a44edd917afd836899357fdae60e"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Flutter\\ephemeral\\flutter_lldb_helper.py": {
+    "mtime": 1780687838.9804542,
+    "ast_hash": "98fc75412162af387e2e3461e4e58094",
+    "semantic_hash": "98fc75412162af387e2e3461e4e58094"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Flutter\\flutter_export_environment.sh": {
+    "mtime": 1780687838.9984503,
+    "ast_hash": "c6f8489a195e5fbc5b0cb0720e126cb1",
+    "semantic_hash": "c6f8489a195e5fbc5b0cb0720e126cb1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\RunnerTests\\RunnerTests.swift": {
+    "mtime": 1780687833.6596577,
+    "ast_hash": "24e5d095048eb86c30423f4e04b6e57b",
+    "semantic_hash": "24e5d095048eb86c30423f4e04b6e57b"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\AppDelegate.swift": {
+    "mtime": 1766075427.354511,
+    "ast_hash": "e277c49e98c9f80e9e71c0524a5cb60f",
+    "semantic_hash": "e277c49e98c9f80e9e71c0524a5cb60f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Contents.json": {
+    "mtime": 1766075427.3555107,
+    "ast_hash": "31a08e429403e265cabfb31b3d65f049",
+    "semantic_hash": "31a08e429403e265cabfb31b3d65f049"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\Contents.json": {
+    "mtime": 1766075427.3615105,
+    "ast_hash": "b9e927ac17345f2d5f052fe68a3487f9",
+    "semantic_hash": "b9e927ac17345f2d5f052fe68a3487f9"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\GeneratedPluginRegistrant.h": {
+    "mtime": 1780687839.3314524,
+    "ast_hash": "decb9041b5e91a07e66f4664e5dac408",
+    "semantic_hash": "decb9041b5e91a07e66f4664e5dac408"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\GeneratedPluginRegistrant.m": {
+    "mtime": 1780687896.223748,
+    "ast_hash": "9690a4079788f3d3ea880cafc35f0c9d",
+    "semantic_hash": "9690a4079788f3d3ea880cafc35f0c9d"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Runner-Bridging-Header.h": {
+    "mtime": 1766075427.3655121,
+    "ast_hash": "7ad7b5cea096132de13ba526b2b9efbe",
+    "semantic_hash": "7ad7b5cea096132de13ba526b2b9efbe"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\lib\\core\\theme\\app_theme.dart": {
+    "mtime": 1780688026.2344923,
+    "ast_hash": "5e716253dcfcdd5e0e59842cea2afc5f",
+    "semantic_hash": "5e716253dcfcdd5e0e59842cea2afc5f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\lib\\main.dart": {
+    "mtime": 1780688054.565917,
+    "ast_hash": "9a2d7a6dce1e87d7dae1163c21489b62",
+    "semantic_hash": "9a2d7a6dce1e87d7dae1163c21489b62"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\flutter\\generated_plugin_registrant.cc": {
+    "mtime": 1780687896.211534,
+    "ast_hash": "f255bd691f810f69c1cf3ee50c5bb51f",
+    "semantic_hash": "f255bd691f810f69c1cf3ee50c5bb51f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\flutter\\generated_plugin_registrant.h": {
+    "mtime": 1780687839.2564533,
+    "ast_hash": "d295462c9da9f7fef22dc86c34492318",
+    "semantic_hash": "d295462c9da9f7fef22dc86c34492318"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\runner\\main.cc": {
+    "mtime": 1766075427.373515,
+    "ast_hash": "539395bcd63dba20afed0838d136189f",
+    "semantic_hash": "539395bcd63dba20afed0838d136189f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\runner\\my_application.cc": {
+    "mtime": 1780687833.7476573,
+    "ast_hash": "9dcff6d98745efd7cb1ad516d62d87c2",
+    "semantic_hash": "9dcff6d98745efd7cb1ad516d62d87c2"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\runner\\my_application.h": {
+    "mtime": 1766075427.3755152,
+    "ast_hash": "ffa1a7c0a2ad45a2c14a921596516ff8",
+    "semantic_hash": "ffa1a7c0a2ad45a2c14a921596516ff8"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Flutter\\GeneratedPluginRegistrant.swift": {
+    "mtime": 1780687896.223748,
+    "ast_hash": "aa4076085b3be08571e9f7c7b4b722ff",
+    "semantic_hash": "aa4076085b3be08571e9f7c7b4b722ff"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Flutter\\ephemeral\\flutter_export_environment.sh": {
+    "mtime": 1780687839.004459,
+    "ast_hash": "efa2e3fbd7717cb311b4375217f4628b",
+    "semantic_hash": "efa2e3fbd7717cb311b4375217f4628b"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\RunnerTests\\RunnerTests.swift": {
+    "mtime": 1780687834.0596614,
+    "ast_hash": "8059f5d27a19c556eeafb49b3f9b7bdd",
+    "semantic_hash": "8059f5d27a19c556eeafb49b3f9b7bdd"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\AppDelegate.swift": {
+    "mtime": 1766075427.3875172,
+    "ast_hash": "4b52e0b89ebfef9baf45b04548c463d6",
+    "semantic_hash": "4b52e0b89ebfef9baf45b04548c463d6"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Contents.json": {
+    "mtime": 1766075427.388518,
+    "ast_hash": "1d48e925145d4b573a3b5d7960a1c585",
+    "semantic_hash": "1d48e925145d4b573a3b5d7960a1c585"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\MainFlutterWindow.swift": {
+    "mtime": 1766075427.4285274,
+    "ast_hash": "93c22dae2d93f3dc1402e121901f582b",
+    "semantic_hash": "93c22dae2d93f3dc1402e121901f582b"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\test\\widget_test.dart": {
+    "mtime": 1780688061.5375748,
+    "ast_hash": "0727cddfa67617b19fa73cf322d06511",
+    "semantic_hash": "0727cddfa67617b19fa73cf322d06511"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\manifest.json": {
+    "mtime": 1780687834.138662,
+    "ast_hash": "ac2244c026079b38ae0cacdf1ad5d5a8",
+    "semantic_hash": "ac2244c026079b38ae0cacdf1ad5d5a8"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\flutter\\generated_plugin_registrant.cc": {
+    "mtime": 1780687896.2136157,
+    "ast_hash": "8dde42a1c042552f20f46dff37613548",
+    "semantic_hash": "8dde42a1c042552f20f46dff37613548"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\flutter\\generated_plugin_registrant.h": {
+    "mtime": 1780687839.2814517,
+    "ast_hash": "0ea33875f9f8e118f9c2ded03e2e2835",
+    "semantic_hash": "0ea33875f9f8e118f9c2ded03e2e2835"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\flutter_window.cpp": {
+    "mtime": 1766075427.4355278,
+    "ast_hash": "2f463f9b7da67a2d692a012f9ea85e0c",
+    "semantic_hash": "2f463f9b7da67a2d692a012f9ea85e0c"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\flutter_window.h": {
+    "mtime": 1766075427.436529,
+    "ast_hash": "7defcc89d4a26d56e801241d624d48fb",
+    "semantic_hash": "7defcc89d4a26d56e801241d624d48fb"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\main.cpp": {
+    "mtime": 1780687834.2276616,
+    "ast_hash": "1d60ea9929fc5387ed28619c7c6ee676",
+    "semantic_hash": "1d60ea9929fc5387ed28619c7c6ee676"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\resource.h": {
+    "mtime": 1766075427.436529,
+    "ast_hash": "1ade5dd15e613479a15e8832ed276f2b",
+    "semantic_hash": "1ade5dd15e613479a15e8832ed276f2b"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\utils.cpp": {
+    "mtime": 1766075427.4385288,
+    "ast_hash": "432461b09d862a2f8dadf380ff0e34e5",
+    "semantic_hash": "432461b09d862a2f8dadf380ff0e34e5"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\utils.h": {
+    "mtime": 1766075427.4385288,
+    "ast_hash": "fd81e143f5614eb6fd75efe539002853",
+    "semantic_hash": "fd81e143f5614eb6fd75efe539002853"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\win32_window.cpp": {
+    "mtime": 1766075427.4385288,
+    "ast_hash": "571eb8234dbc2661be03aa5f2a4d2fca",
+    "semantic_hash": "571eb8234dbc2661be03aa5f2a4d2fca"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\win32_window.h": {
+    "mtime": 1766075427.4395285,
+    "ast_hash": "7569387d58711ab975940f4df3b4bcda",
+    "semantic_hash": "7569387d58711ab975940f4df3b4bcda"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\CLAUDE.md": {
+    "mtime": 1780687546.1574137,
+    "ast_hash": "f20c7281088db523ed94495b68529eae",
+    "semantic_hash": "f20c7281088db523ed94495b68529eae"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\Project.md": {
+    "mtime": 1780685992.7197123,
+    "ast_hash": "c993e76c37b187147cc9aae4d95d2ad4",
+    "semantic_hash": "c993e76c37b187147cc9aae4d95d2ad4"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\README.md": {
+    "mtime": 1780687834.0966587,
+    "ast_hash": "611d97840cc3aefcbce855f549a0919d",
+    "semantic_hash": "611d97840cc3aefcbce855f549a0919d"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\analysis_options.yaml": {
+    "mtime": 1780687832.9051466,
+    "ast_hash": "9e65f4b9beebb674c0dc252f70a5c177",
+    "semantic_hash": "9e65f4b9beebb674c0dc252f70a5c177"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\README.md": {
+    "mtime": 1766075427.3635116,
+    "ast_hash": "f7ee1b402881509d197f34963e569927",
+    "semantic_hash": "f7ee1b402881509d197f34963e569927"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\l10n.yaml": {
+    "mtime": 1780688030.746254,
+    "ast_hash": "0da9fbeb5827233f2ae0347cde625bdf",
+    "semantic_hash": "0da9fbeb5827233f2ae0347cde625bdf"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\CMakeLists.txt": {
+    "mtime": 1780687833.6986582,
+    "ast_hash": "8ab38cf8ba8ffdd7618c3585c50d921b",
+    "semantic_hash": "8ab38cf8ba8ffdd7618c3585c50d921b"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\flutter\\CMakeLists.txt": {
+    "mtime": 1766075427.3705146,
+    "ast_hash": "2195470ce31675d31db5a37590d011f6",
+    "semantic_hash": "2195470ce31675d31db5a37590d011f6"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\linux\\runner\\CMakeLists.txt": {
+    "mtime": 1766075427.3725162,
+    "ast_hash": "30cc1614b16214b66c014af09ba699eb",
+    "semantic_hash": "30cc1614b16214b66c014af09ba699eb"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\pubspec.yaml": {
+    "mtime": 1780687852.6947188,
+    "ast_hash": "629f62d8f8bbfebca11f75559ecf5ca4",
+    "semantic_hash": "629f62d8f8bbfebca11f75559ecf5ca4"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\spec.md": {
+    "mtime": 1780687526.8665683,
+    "ast_hash": "3eeabdf044c833113bed5fd28282c849",
+    "semantic_hash": "3eeabdf044c833113bed5fd28282c849"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\todo.md": {
+    "mtime": 1780688117.0965185,
+    "ast_hash": "3aa4304ff44742c570d338905eea8eda",
+    "semantic_hash": "3aa4304ff44742c570d338905eea8eda"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\index.html": {
+    "mtime": 1780687834.1286647,
+    "ast_hash": "9934be021887b3fc7c8cd17e3544684c",
+    "semantic_hash": "9934be021887b3fc7c8cd17e3544684c"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\CMakeLists.txt": {
+    "mtime": 1780687834.1626582,
+    "ast_hash": "a1aefdd58ecce8d6e378574049d785d4",
+    "semantic_hash": "a1aefdd58ecce8d6e378574049d785d4"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\flutter\\CMakeLists.txt": {
+    "mtime": 1766075427.4345279,
+    "ast_hash": "bbf66fed5180bd9ae8198b8d7c4a0001",
+    "semantic_hash": "bbf66fed5180bd9ae8198b8d7c4a0001"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\windows\\runner\\CMakeLists.txt": {
+    "mtime": 1766075427.4355278,
+    "ast_hash": "028602ab9754bffe716659ada7590d29",
+    "semantic_hash": "028602ab9754bffe716659ada7590d29"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png": {
+    "mtime": 1766075427.3395064,
+    "ast_hash": "13e9c72ec37fac220397aa819fa1ef2d",
+    "semantic_hash": "13e9c72ec37fac220397aa819fa1ef2d"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png": {
+    "mtime": 1766075427.3395064,
+    "ast_hash": "6270344430679711b81476e29878caa7",
+    "semantic_hash": "6270344430679711b81476e29878caa7"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png": {
+    "mtime": 1766075427.3405063,
+    "ast_hash": "a0a8db5985280b3679d99a820ae2db79",
+    "semantic_hash": "a0a8db5985280b3679d99a820ae2db79"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png": {
+    "mtime": 1766075427.3415072,
+    "ast_hash": "afe1b655b9f32da22f9a4301bb8e6ba8",
+    "semantic_hash": "afe1b655b9f32da22f9a4301bb8e6ba8"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png": {
+    "mtime": 1766075427.3425076,
+    "ast_hash": "57838d52c318faff743130c3fcfae0c6",
+    "semantic_hash": "57838d52c318faff743130c3fcfae0c6"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-1024x1024@1x.png": {
+    "mtime": 1766075460.6929412,
+    "ast_hash": "c785f8932297af4acd5f5ccb7630f01c",
+    "semantic_hash": "c785f8932297af4acd5f5ccb7630f01c"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@1x.png": {
+    "mtime": 1766075460.723946,
+    "ast_hash": "a2f8558fb1d42514111fbbb19fb67314",
+    "semantic_hash": "a2f8558fb1d42514111fbbb19fb67314"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@2x.png": {
+    "mtime": 1766075460.6699374,
+    "ast_hash": "2247a840b6ee72b8a069208af170e5b1",
+    "semantic_hash": "2247a840b6ee72b8a069208af170e5b1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-20x20@3x.png": {
+    "mtime": 1766075460.7469523,
+    "ast_hash": "1b3b1538136316263c7092951e923e9d",
+    "semantic_hash": "1b3b1538136316263c7092951e923e9d"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@1x.png": {
+    "mtime": 1766075461.0050104,
+    "ast_hash": "be8887071dd7ec39cb754d236aa9584f",
+    "semantic_hash": "be8887071dd7ec39cb754d236aa9584f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@2x.png": {
+    "mtime": 1766075460.2778459,
+    "ast_hash": "043119ef4faa026ff82bd03f241e5338",
+    "semantic_hash": "043119ef4faa026ff82bd03f241e5338"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-29x29@3x.png": {
+    "mtime": 1766075460.7259467,
+    "ast_hash": "2b1452c4c1bda6177b4fbbb832df217f",
+    "semantic_hash": "2b1452c4c1bda6177b4fbbb832df217f"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@1x.png": {
+    "mtime": 1766075460.3038538,
+    "ast_hash": "2247a840b6ee72b8a069208af170e5b1",
+    "semantic_hash": "2247a840b6ee72b8a069208af170e5b1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@2x.png": {
+    "mtime": 1766075460.8189685,
+    "ast_hash": "8245359312aea1b0d2412f79a07b0ca5",
+    "semantic_hash": "8245359312aea1b0d2412f79a07b0ca5"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-40x40@3x.png": {
+    "mtime": 1766075460.368868,
+    "ast_hash": "5b3c0902200ce596e9848f22e1f0fe0e",
+    "semantic_hash": "5b3c0902200ce596e9848f22e1f0fe0e"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-60x60@2x.png": {
+    "mtime": 1766075460.6899395,
+    "ast_hash": "5b3c0902200ce596e9848f22e1f0fe0e",
+    "semantic_hash": "5b3c0902200ce596e9848f22e1f0fe0e"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-60x60@3x.png": {
+    "mtime": 1766075460.237838,
+    "ast_hash": "e419d22a37bc40ba185aca1acb6d4ac6",
+    "semantic_hash": "e419d22a37bc40ba185aca1acb6d4ac6"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-76x76@1x.png": {
+    "mtime": 1766075460.415879,
+    "ast_hash": "36c0d7a7132bdde18898ffdfcfcdc4d2",
+    "semantic_hash": "36c0d7a7132bdde18898ffdfcfcdc4d2"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-76x76@2x.png": {
+    "mtime": 1766075461.0090103,
+    "ast_hash": "643842917530acf4c5159ae851b0baf2",
+    "semantic_hash": "643842917530acf4c5159ae851b0baf2"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\AppIcon.appiconset\\Icon-App-83.5x83.5@2x.png": {
+    "mtime": 1766075460.7919612,
+    "ast_hash": "665cb5e3c5729da6d639d26eff47a503",
+    "semantic_hash": "665cb5e3c5729da6d639d26eff47a503"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage.png": {
+    "mtime": 1766075460.200827,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage@2x.png": {
+    "mtime": 1766075460.148817,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\ios\\Runner\\Assets.xcassets\\LaunchImage.imageset\\LaunchImage@3x.png": {
+    "mtime": 1766075459.7777326,
+    "ast_hash": "978c1bee49d7ad5fc1a4d81099b13e18",
+    "semantic_hash": "978c1bee49d7ad5fc1a4d81099b13e18"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_1024.png": {
+    "mtime": 1766075459.6687088,
+    "ast_hash": "c9becc9105f8cabce934d20c7bfb6aac",
+    "semantic_hash": "c9becc9105f8cabce934d20c7bfb6aac"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_128.png": {
+    "mtime": 1766075459.3596416,
+    "ast_hash": "3ded30823804caaa5ccc944067c54a36",
+    "semantic_hash": "3ded30823804caaa5ccc944067c54a36"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_16.png": {
+    "mtime": 1766075459.4056497,
+    "ast_hash": "8bf511604bc6ed0a6aeb380c5113fdcf",
+    "semantic_hash": "8bf511604bc6ed0a6aeb380c5113fdcf"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_256.png": {
+    "mtime": 1766075459.7177193,
+    "ast_hash": "dfe2c93d1536ae02f085cc63faa3430e",
+    "semantic_hash": "dfe2c93d1536ae02f085cc63faa3430e"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_32.png": {
+    "mtime": 1766075459.413651,
+    "ast_hash": "8e0ae58e362a6636bdfccbc04da2c58c",
+    "semantic_hash": "8e0ae58e362a6636bdfccbc04da2c58c"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_512.png": {
+    "mtime": 1766075459.391646,
+    "ast_hash": "0ad44039155424738917502c69667699",
+    "semantic_hash": "0ad44039155424738917502c69667699"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\macos\\Runner\\Assets.xcassets\\AppIcon.appiconset\\app_icon_64.png": {
+    "mtime": 1766075459.3266327,
+    "ast_hash": "04e7b6ef05346c70b663ca1d97de3ad5",
+    "semantic_hash": "04e7b6ef05346c70b663ca1d97de3ad5"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\favicon.png": {
+    "mtime": 1766075427.4305265,
+    "ast_hash": "5dcef449791fa27946b3d35ad8803796",
+    "semantic_hash": "5dcef449791fa27946b3d35ad8803796"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\icons\\Icon-192.png": {
+    "mtime": 1766075427.4305265,
+    "ast_hash": "ac9a721a12bbc803b44f645561ecb1e1",
+    "semantic_hash": "ac9a721a12bbc803b44f645561ecb1e1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\icons\\Icon-512.png": {
+    "mtime": 1766075427.4315276,
+    "ast_hash": "96e752610906ba2a93c65f8abe1645f1",
+    "semantic_hash": "96e752610906ba2a93c65f8abe1645f1"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\icons\\Icon-maskable-192.png": {
+    "mtime": 1766075462.9684525,
+    "ast_hash": "c457ef57daa1d16f64b27b786ec2ea3c",
+    "semantic_hash": "c457ef57daa1d16f64b27b786ec2ea3c"
+  },
+  "C:\\Users\\HP\\Desktop\\school ts 2\\projects\\nabda-better\\web\\icons\\Icon-maskable-512.png": {
+    "mtime": 1766075462.9564495,
+    "ast_hash": "301a7604d45b3e739efc881eb04896ea",
+    "semantic_hash": "301a7604d45b3e739efc881eb04896ea"
+  }
+}

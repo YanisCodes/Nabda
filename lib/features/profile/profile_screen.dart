@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/constants/mock_data.dart';
 import '../../core/constants/wilayas.dart';
 import '../../core/theme/app_theme.dart';
 import '../../data/models/app_language.dart';
+import '../../data/models/event_category.dart';
 import '../../l10n/app_localizations.dart';
 import '../onboarding/onboarding_screen.dart';
 import 'profile_provider.dart';
@@ -35,6 +37,10 @@ class ProfileScreen extends ConsumerWidget {
             _SectionLabel(label: l10n.labelYourLanguage, theme: theme),
             const SizedBox(height: 12),
             _LanguageSelector(selectedLanguage: state.language),
+            const SizedBox(height: 28),
+            _SectionLabel(label: l10n.sectionInterests, theme: theme),
+            const SizedBox(height: 12),
+            _InterestsSelector(selected: state.interests),
             const SizedBox(height: 36),
             _SaveButton(state: state, label: l10n.btnSave),
             const SizedBox(height: 32),
@@ -190,6 +196,84 @@ class _LangChip extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _InterestsSelector extends ConsumerWidget {
+  const _InterestsSelector({required this.selected});
+  final Set<EventCategory> selected;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: kCategories.map((cat) {
+        final isSelected = selected.contains(cat.id);
+        return GestureDetector(
+          onTap: () =>
+              ref.read(profileProvider.notifier).toggleInterest(cat.id),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? AppColors.amberDark.withValues(alpha: 0.25)
+                  : AppColors.surfaceVariantDark,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: isSelected ? AppColors.amber : AppColors.borderDark,
+                width: isSelected ? 1.5 : 1,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  _categoryIcon(cat.id),
+                  size: 15,
+                  color: isSelected
+                      ? AppColors.amber
+                      : AppColors.textSecondary,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  _categoryLabel(l10n, cat.id),
+                  style: TextStyle(
+                    color: isSelected
+                        ? AppColors.amber
+                        : AppColors.textSecondary,
+                    fontSize: 13,
+                    fontWeight: isSelected
+                        ? FontWeight.w600
+                        : FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  IconData _categoryIcon(EventCategory cat) => switch (cat) {
+        EventCategory.formation => Icons.school_rounded,
+        EventCategory.sport => Icons.sports_soccer_rounded,
+        EventCategory.culture => Icons.theater_comedy_rounded,
+        EventCategory.ecologie => Icons.eco_rounded,
+        EventCategory.volontariat => Icons.volunteer_activism_rounded,
+      };
+
+  String _categoryLabel(AppLocalizations l10n, EventCategory cat) =>
+      switch (cat) {
+        EventCategory.formation => l10n.categoryFormation,
+        EventCategory.sport => l10n.categorySport,
+        EventCategory.culture => l10n.categoryCulture,
+        EventCategory.ecologie => l10n.categoryEcologie,
+        EventCategory.volontariat => l10n.categoryVolontariat,
+      };
 }
 
 class _SaveButton extends ConsumerWidget {

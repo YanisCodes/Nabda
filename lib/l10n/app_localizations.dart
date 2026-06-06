@@ -381,6 +381,30 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Toutes les villes'**
   String get filterAllCities;
+
+  /// No description provided for @sectionInterests.
+  ///
+  /// In fr, this message translates to:
+  /// **'Centres d\'intérêt'**
+  String get sectionInterests;
+
+  /// No description provided for @sectionForYou.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pour vous'**
+  String get sectionForYou;
+
+  /// No description provided for @labelSoon.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get labelSoon;
+
+  /// No description provided for @labelOngoing.
+  ///
+  /// In fr, this message translates to:
+  /// **'En cours'**
+  String get labelOngoing;
 }
 
 class _AppLocalizationsDelegate

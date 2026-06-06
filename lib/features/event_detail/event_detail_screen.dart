@@ -8,6 +8,7 @@ import '../../data/local/data_providers.dart';
 import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
 import '../../data/models/event_category.dart';
+import '../../data/models/event_timing.dart';
 import '../../l10n/app_localizations.dart';
 import '../map/map_screen.dart';
 
@@ -108,6 +109,7 @@ class _EventBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
+    final timing = event.timingStatus;
 
     return Padding(
       padding: const EdgeInsets.all(20),
@@ -140,6 +142,11 @@ class _EventBody extends StatelessWidget {
             icon: Icons.location_on_outlined,
             text: event.city,
           ),
+          if (timing == EventTimingStatus.soon ||
+              timing == EventTimingStatus.ongoing) ...[
+            const SizedBox(height: 16),
+            _TimingBanner(status: timing, l10n: l10n),
+          ],
           const SizedBox(height: 20),
           const Divider(height: 1),
           const SizedBox(height: 20),
@@ -326,6 +333,47 @@ class _ContactButton extends StatelessWidget {
         );
       }
     }
+  }
+}
+
+class _TimingBanner extends StatelessWidget {
+  const _TimingBanner({required this.status, required this.l10n});
+  final EventTimingStatus status;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final (label, icon, color) = switch (status) {
+      EventTimingStatus.ongoing =>
+        (l10n.labelOngoing, Icons.fiber_manual_record_rounded, AppColors.success),
+      EventTimingStatus.soon =>
+        (l10n.labelSoon, Icons.access_time_rounded, AppColors.amber),
+      _ => ('', Icons.circle, Colors.transparent),
+    };
+    if (label.isEmpty) return const SizedBox.shrink();
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, size: 14, color: color),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: TextStyle(
+              color: color,
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

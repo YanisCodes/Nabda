@@ -4,6 +4,7 @@ import 'package:intl/intl.dart' as intl;
 import '../../../core/theme/app_theme.dart';
 import '../../../data/models/event.dart';
 import '../../../data/models/event_category.dart';
+import '../../../data/models/event_timing.dart';
 import '../../../l10n/app_localizations.dart';
 
 class EventCard extends StatelessWidget {
@@ -16,6 +17,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final locale = Localizations.localeOf(context).toString();
+    final timing = event.timingStatus;
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -35,6 +37,11 @@ class EventCard extends StatelessWidget {
                     children: [
                       _CategoryBadge(category: event.category),
                       const Spacer(),
+                      if (timing == EventTimingStatus.soon ||
+                          timing == EventTimingStatus.ongoing) ...[
+                        _TimingBadge(status: timing),
+                        const SizedBox(width: 6),
+                      ],
                       _PriceBadge(isFree: event.isFree),
                     ],
                   ),
@@ -54,20 +61,26 @@ class EventCard extends StatelessWidget {
                       const Icon(Icons.calendar_today_outlined,
                           size: 13, color: AppColors.textSecondary),
                       const SizedBox(width: 4),
-                      Text(
-                        _formatDate(event.dateStart, locale),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: AppColors.textSecondary,
+                      Flexible(
+                        child: Text(
+                          _formatDate(event.dateStart, locale),
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(width: 14),
                       const Icon(Icons.location_on_outlined,
                           size: 13, color: AppColors.textSecondary),
                       const SizedBox(width: 4),
-                      Text(
-                        event.city,
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: AppColors.textSecondary,
+                      Flexible(
+                        child: Text(
+                          event.city,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -126,6 +139,45 @@ class _ImagePlaceholder extends StatelessWidget {
       };
 }
 
+class _TimingBadge extends StatelessWidget {
+  const _TimingBadge({required this.status});
+  final EventTimingStatus status;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final (label, color) = switch (status) {
+      EventTimingStatus.ongoing => (l10n.labelOngoing, AppColors.success),
+      EventTimingStatus.soon => (l10n.labelSoon, AppColors.amber),
+      _ => ('', Colors.transparent),
+    };
+    if (label.isEmpty) return const SizedBox.shrink();
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: color.withValues(alpha: 0.4)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.access_time_rounded, size: 10, color: color),
+          const SizedBox(width: 3),
+          Text(
+            label,
+            style: TextStyle(
+              color: color,
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _CategoryBadge extends StatelessWidget {
   const _CategoryBadge({required this.category});
   final EventCategory category;
@@ -134,11 +186,14 @@ class _CategoryBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final (label, color) = switch (category) {
-      EventCategory.formation => (l10n.categoryFormation, const Color(0xFF1565C0)),
+      EventCategory.formation =>
+        (l10n.categoryFormation, const Color(0xFF1565C0)),
       EventCategory.sport => (l10n.categorySport, const Color(0xFF2E7D32)),
-      EventCategory.culture => (l10n.categoryCulture, const Color(0xFF6A1B9A)),
+      EventCategory.culture =>
+        (l10n.categoryCulture, const Color(0xFF6A1B9A)),
       EventCategory.ecologie => (l10n.categoryEcologie, AppColors.green),
-      EventCategory.volontariat => (l10n.categoryVolontariat, const Color(0xFFBF360C)),
+      EventCategory.volontariat =>
+        (l10n.categoryVolontariat, const Color(0xFFBF360C)),
     };
 
     return Container(

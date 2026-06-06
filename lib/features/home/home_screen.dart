@@ -79,7 +79,7 @@ class _HomeContent extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('OTEJ Link'),
+        title: Text(l10n.appName),
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline),
@@ -104,7 +104,9 @@ class _HomeContent extends ConsumerWidget {
                 showFallback: !state.cityHasEvents && state.upcomingEvents.isNotEmpty,
               ),
               SectionHeader(
-                title: l10n.sectionThisWeek,
+                title: state.isPersonalized
+                    ? l10n.sectionForYou
+                    : l10n.sectionThisWeek,
                 onSeeAll: onGoToExplore,
               ),
               _EventsSection(

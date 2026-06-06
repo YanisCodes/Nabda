@@ -156,4 +156,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get filterAllCities => 'Toutes les villes';
+
+  @override
+  String get sectionInterests => 'Centres d\'intérêt';
+
+  @override
+  String get sectionForYou => 'Pour vous';
+
+  @override
+  String get labelSoon => 'Bientôt';
+
+  @override
+  String get labelOngoing => 'En cours';
 }

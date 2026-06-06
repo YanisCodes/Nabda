@@ -140,10 +140,9 @@ _L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", ju
 - [x] **P01** Barre de recherche dans Explorer (filtre texte local : titre + ville + description, tri par date)
 - [x] **P02** Filtre par ville dans Explorer (ville du profil ou autre)
 - [x] **P03** Bouton "Voir sur la carte" depuis le détail d'un événement
-- [ ] **P04** Centres d'intérêt dans le profil + filtrage accueil personnalisé
-- [ ] **P05** Version de l'app dans le profil
-
-## Backlog v2 (hors scope post-MVP)
+- [x] **P04** Centres d'intérêt dans le profil + filtrage accueil personnalisé
+- [x] **P05** Rappel intelligent local — badge "Bientôt" / "En cours" sur les cartes et détail événement
+- [x] **P06** Polish / QA / Stabilisation — titre AppBar traduit (`l10n.appName`), overflow protégé sur la ligne date+ville des cartes événement (`Flexible`)
 
 - [ ] Module volontariat (missions + heures)
 - [ ] Notifications push (Firebase FCM)

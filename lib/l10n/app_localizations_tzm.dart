@@ -154,4 +154,16 @@ class AppLocalizationsTzm extends AppLocalizations {
 
   @override
   String get filterAllCities => 'Meṛṛa timendawin';
+
+  @override
+  String get sectionInterests => 'Iswi·nnek';
+
+  @override
+  String get sectionForYou => 'I kem/kek';
+
+  @override
+  String get labelSoon => 'Seld';
+
+  @override
+  String get labelOngoing => 'Tura';
 }

@@ -250,8 +250,8 @@
     "semantic_hash": "30cc1614b16214b66c014af09ba699eb"
   },
   "pubspec.yaml": {
-    "mtime": 1780690761.6415436,
-    "ast_hash": "5a8f6c1bdffe446f3796aa16f17f0d6a",
+    "mtime": 1780699678.319085,
+    "ast_hash": "815cdffb78a542ccea2a7e48cb8c2a82",
     "semantic_hash": ""
   },
   "spec.md": {
@@ -260,8 +260,8 @@
     "semantic_hash": "3eeabdf044c833113bed5fd28282c849"
   },
   "todo.md": {
-    "mtime": 1780697834.5368376,
-    "ast_hash": "12ed9eaac8907306b4e7d89642669767",
+    "mtime": 1780699774.810115,
+    "ast_hash": "06e8796c572f5792e299130d234814d3",
     "semantic_hash": ""
   },
   "web/index.html": {
@@ -515,8 +515,8 @@
     "semantic_hash": ""
   },
   "lib/features/explore/widgets/event_card.dart": {
-    "mtime": 1780697722.3812654,
-    "ast_hash": "c564227c854b00018e75190db9978583",
+    "mtime": 1780699693.520636,
+    "ast_hash": "213e857e846213acdf8767c1b2ea6f38",
     "semantic_hash": ""
   },
   "lib/features/home/home_screen.dart": {
@@ -535,18 +535,18 @@
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations.dart": {
-    "mtime": 1780697519.0575247,
+    "mtime": 1780738356.9343305,
     "ast_hash": "f2d789850500d94df05d468d80b3f3da",
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations_fr.dart": {
-    "mtime": 1780697519.0505269,
+    "mtime": 1780738356.9258108,
     "ast_hash": "35c162b563a67529d58c57ed424598eb",
     "semantic_hash": ""
   },
   "lib/features/event_detail/event_detail_screen.dart": {
-    "mtime": 1780697758.8834176,
-    "ast_hash": "0e6aa0e8b6e164292c30f8e02bc7645b",
+    "mtime": 1780699711.6511953,
+    "ast_hash": "6849fc80635147d6df2a638e7c4b8fc4",
     "semantic_hash": ""
   },
   "lib/features/home/home_provider.dart": {
@@ -625,12 +625,12 @@
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations_ar.dart": {
-    "mtime": 1780697519.049526,
+    "mtime": 1780738356.9238124,
     "ast_hash": "a60f994ad81ef4eae9d90c858d53ec76",
     "semantic_hash": ""
   },
   "lib/l10n/app_localizations_tzm.dart": {
-    "mtime": 1780697519.0535257,
+    "mtime": 1780738356.9298105,
     "ast_hash": "121beb7a77991c1abfcb6c5c4f70c862",
     "semantic_hash": ""
   },

@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/app_language.dart';
+import '../models/event_category.dart';
 
 class Preferences {
   Preferences(this._prefs);
@@ -10,15 +13,25 @@ class Preferences {
 
   static const _kCity = 'user_city';
   static const _kLang = 'user_lang';
+  static const _kInterests = 'user_interests';
 
   String? get city => _prefs.getString(_kCity);
   AppLanguage get language =>
       AppLanguage.fromCode(_prefs.getString(_kLang) ?? 'fr');
   bool get isFirstLaunch => city == null;
 
+  Set<EventCategory> get interests {
+    final raw = _prefs.getString(_kInterests);
+    if (raw == null) return {};
+    final list = (jsonDecode(raw) as List).cast<String>();
+    return list.map(EventCategory.fromString).toSet();
+  }
+
   Future<void> setCity(String city) => _prefs.setString(_kCity, city);
   Future<void> setLanguage(AppLanguage lang) =>
       _prefs.setString(_kLang, lang.code);
+  Future<void> setInterests(Set<EventCategory> interests) =>
+      _prefs.setString(_kInterests, jsonEncode(interests.map((e) => e.name).toList()));
   Future<void> clearAll() => _prefs.clear();
 }
 

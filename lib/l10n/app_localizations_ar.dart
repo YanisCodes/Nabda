@@ -153,4 +153,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get filterAllCities => 'كل الولايات';
+
+  @override
+  String get sectionInterests => 'مراكز الاهتمام';
+
+  @override
+  String get sectionForYou => 'لك أنت';
+
+  @override
+  String get labelSoon => 'قريباً';
+
+  @override
+  String get labelOngoing => 'جارٍ الآن';
 }

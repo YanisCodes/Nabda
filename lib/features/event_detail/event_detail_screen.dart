@@ -9,6 +9,7 @@ import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
 import '../../data/models/event_category.dart';
 import '../../l10n/app_localizations.dart';
+import '../map/map_screen.dart';
 
 class EventDetailScreen extends ConsumerWidget {
   const EventDetailScreen({super.key, required this.event});
@@ -165,6 +166,8 @@ class _EventBody extends StatelessWidget {
           ],
           const SizedBox(height: 28),
           _ContactButton(center: center),
+          const SizedBox(height: 10),
+          _MapButton(center: center, city: event.city),
           const SizedBox(height: 16),
         ],
       ),
@@ -323,6 +326,37 @@ class _ContactButton extends StatelessWidget {
         );
       }
     }
+  }
+}
+
+class _MapButton extends StatelessWidget {
+  const _MapButton({required this.center, required this.city});
+  final model.Center? center;
+  final String city;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final hasLocation = center != null || city.isNotEmpty;
+
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: hasLocation
+            ? () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => MapScreen(
+                      focusCenter: center,
+                      focusCity: center == null ? city : null,
+                    ),
+                  ),
+                )
+            : null,
+        icon: const Icon(Icons.map_outlined, size: 18),
+        label: Text(l10n.btnViewOnMap),
+      ),
+    );
   }
 }
 

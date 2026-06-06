@@ -11,7 +11,13 @@ import '../../data/models/center.dart' as model;
 import '../../l10n/app_localizations.dart';
 
 class MapScreen extends ConsumerWidget {
-  const MapScreen({super.key});
+  const MapScreen({super.key, this.focusCenter, this.focusCity});
+
+  /// Centre à mettre en évidence — prioritaire sur focusCity.
+  final model.Center? focusCenter;
+
+  /// Ville de secours si focusCenter est null.
+  final String? focusCity;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,9 +39,7 @@ class MapScreen extends ConsumerWidget {
             userAgentPackageName: 'com.otej.otej_link',
           ),
           MarkerLayer(
-            markers: centers
-                .map((c) => _buildMarker(context, c))
-                .toList(),
+            markers: centers.map((c) => _buildMarker(context, c)).toList(),
           ),
         ],
       ),
@@ -43,21 +47,27 @@ class MapScreen extends ConsumerWidget {
   }
 
   Marker _buildMarker(BuildContext context, model.Center center) {
+    final isFocused = focusCenter?.id == center.id;
     return Marker(
       point: LatLng(center.lat, center.lng),
-      width: 44,
-      height: 44,
+      width: isFocused ? 52 : 44,
+      height: isFocused ? 52 : 44,
       child: GestureDetector(
         onTap: () => _showSheet(context, center),
-        child: const _PinIcon(),
+        child: _PinIcon(focused: isFocused),
       ),
     );
   }
 
-  (LatLng, double) _initialView(String? city, List<model.Center> centers) {
-    if (city != null && city.isNotEmpty) {
+  /// Priorité : focusCenter → focusCity → ville du profil → centre Algérie.
+  (LatLng, double) _initialView(String? profileCity, List<model.Center> centers) {
+    if (focusCenter != null) {
+      return (LatLng(focusCenter!.lat, focusCenter!.lng), 13.0);
+    }
+    final targetCity = focusCity ?? profileCity;
+    if (targetCity != null && targetCity.isNotEmpty) {
       final match = centers.where(
-        (c) => c.city.toLowerCase() == city.toLowerCase(),
+        (c) => c.city.toLowerCase() == targetCity.toLowerCase(),
       );
       if (match.isNotEmpty) {
         final c = match.first;
@@ -82,27 +92,29 @@ class MapScreen extends ConsumerWidget {
 // ─── Icône marqueur ───────────────────────────────────────────────────────────
 
 class _PinIcon extends StatelessWidget {
-  const _PinIcon();
+  const _PinIcon({this.focused = false});
+  final bool focused;
 
   @override
   Widget build(BuildContext context) {
+    final color = focused ? AppColors.amber : AppColors.green;
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.green,
+        color: color,
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white.withValues(alpha: 0.9), width: 2),
         boxShadow: [
           BoxShadow(
-            color: AppColors.green.withValues(alpha: 0.5),
-            blurRadius: 6,
+            color: color.withValues(alpha: focused ? 0.7 : 0.5),
+            blurRadius: focused ? 12 : 6,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: const Icon(
+      child: Icon(
         Icons.business_rounded,
         color: Colors.white,
-        size: 22,
+        size: focused ? 26 : 22,
       ),
     );
   }
@@ -169,8 +181,7 @@ class _CenterSheet extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content:
-                Text(AppLocalizations.of(context).errorCantOpenPhone),
+            content: Text(AppLocalizations.of(context).errorCantOpenPhone),
           ),
         );
       }

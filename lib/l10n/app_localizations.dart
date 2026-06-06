@@ -357,6 +357,30 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Contacter'**
   String get btnContact;
+
+  /// No description provided for @hintSearch.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rechercher un événement...'**
+  String get hintSearch;
+
+  /// No description provided for @noSearchResults.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun résultat pour cette recherche.'**
+  String get noSearchResults;
+
+  /// No description provided for @btnViewOnMap.
+  ///
+  /// In fr, this message translates to:
+  /// **'Voir sur la carte'**
+  String get btnViewOnMap;
+
+  /// No description provided for @filterAllCities.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toutes les villes'**
+  String get filterAllCities;
 }
 
 class _AppLocalizationsDelegate

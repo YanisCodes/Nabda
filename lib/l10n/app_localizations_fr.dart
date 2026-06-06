@@ -144,4 +144,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get btnContact => 'Contacter';
+
+  @override
+  String get hintSearch => 'Rechercher un événement...';
+
+  @override
+  String get noSearchResults => 'Aucun résultat pour cette recherche.';
+
+  @override
+  String get btnViewOnMap => 'Voir sur la carte';
+
+  @override
+  String get filterAllCities => 'Toutes les villes';
 }

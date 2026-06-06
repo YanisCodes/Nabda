@@ -119,7 +119,7 @@ _L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", ju
 - [x] **T38** Configurer `flutter_localizations` dans `pubspec.yaml` et `main.dart`
 - [x] **T39** Créer `lib/l10n/app_fr.arb`, `app_ar.arb`, `app_tz.arb` avec toutes les chaînes UI
 - [x] **T40** Remplacer toutes les strings hardcodées par `AppLocalizations.of(context).xxx`
-- [ ] **T41** Tester le RTL avec la langue arabe
+- [x] **T41** Tester le RTL avec la langue arabe
 
 **Livrable T38→T41 :** app complètement traduite, RTL fonctionnel en arabe.
 
@@ -127,15 +127,23 @@ _L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", ju
 
 ## PHASE 12 — Polish et Green Tech audit
 
-- [ ] **T42** Vérifier que toutes les images passent par `CachedNetworkImage`
-- [ ] **T43** Compresser les assets locaux (icônes, images de test) en WebP < 50KB
+- [x] **T42** Vérifier que toutes les images passent par `CachedNetworkImage`
+- [x] **T43** Compresser les assets locaux (icônes, images de test) en WebP < 50KB
 - [ ] **T44** Profiler avec Flutter DevTools : pas de rebuild inutile, pas de leak mémoire
 - [ ] **T45** Tester hors ligne complet : couper le réseau, vérifier que tout s'affiche
 - [ ] **T46** Tester sur un vieux Android (API 21 minimum)
 
 ---
 
-## Backlog v2 (hors MVP)
+## POST-MVP — Améliorations
+
+- [x] **P01** Barre de recherche dans Explorer (filtre texte local : titre + ville + description, tri par date)
+- [x] **P02** Filtre par ville dans Explorer (ville du profil ou autre)
+- [x] **P03** Bouton "Voir sur la carte" depuis le détail d'un événement
+- [ ] **P04** Centres d'intérêt dans le profil + filtrage accueil personnalisé
+- [ ] **P05** Version de l'app dans le profil
+
+## Backlog v2 (hors scope post-MVP)
 
 - [ ] Module volontariat (missions + heures)
 - [ ] Notifications push (Firebase FCM)

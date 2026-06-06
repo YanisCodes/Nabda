@@ -141,4 +141,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get btnContact => 'اتصل';
+
+  @override
+  String get hintSearch => 'ابحث عن حدث...';
+
+  @override
+  String get noSearchResults => 'لا توجد نتائج لهذا البحث.';
+
+  @override
+  String get btnViewOnMap => 'عرض على الخريطة';
+
+  @override
+  String get filterAllCities => 'كل الولايات';
 }

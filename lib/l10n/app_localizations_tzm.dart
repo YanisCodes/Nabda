@@ -142,4 +142,16 @@ class AppLocalizationsTzm extends AppLocalizations {
 
   @override
   String get btnContact => 'Muqel';
+
+  @override
+  String get hintSearch => 'Nadi amunas...';
+
+  @override
+  String get noSearchResults => 'Ulac anaẓur i unadi·a.';
+
+  @override
+  String get btnViewOnMap => 'Wali deg tasedwit';
+
+  @override
+  String get filterAllCities => 'Meṛṛa timendawin';
 }

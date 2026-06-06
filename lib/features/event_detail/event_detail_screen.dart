@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/theme/app_theme.dart';
-import '../../data/local/mock_repository.dart';
+import '../../data/local/data_providers.dart';
 import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
 import '../../data/models/event_category.dart';
 import '../../l10n/app_localizations.dart';
 
-class EventDetailScreen extends StatelessWidget {
+class EventDetailScreen extends ConsumerWidget {
   const EventDetailScreen({super.key, required this.event});
 
   final Event event;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final allCenters = ref.watch(centersListProvider);
     final center = event.centerId != null
-        ? MockRepository.getCenterById(event.centerId!)
+        ? allCenters.where((c) => c.id == event.centerId).firstOrNull
         : null;
 
     return Scaffold(
@@ -129,7 +132,7 @@ class _EventBody extends StatelessWidget {
           const SizedBox(height: 20),
           _InfoRow(
             icon: Icons.calendar_today_outlined,
-            text: _formatDateRange(event),
+            text: _formatDateRange(event, Localizations.localeOf(context).toString()),
           ),
           const SizedBox(height: 10),
           _InfoRow(
@@ -168,22 +171,19 @@ class _EventBody extends StatelessWidget {
     );
   }
 
-  String _formatDateRange(Event e) {
-    final start = _fmt(e.dateStart);
+  String _formatDateRange(Event e, String locale) {
+    final start = _fmt(e.dateStart, locale);
     if (e.dateEnd == null) return start;
-    final end = _fmt(e.dateEnd!);
+    final end = _fmt(e.dateEnd!, locale);
     if (start == end) {
       return '$start · ${_time(e.dateStart)} – ${_time(e.dateEnd!)}';
     }
     return '$start – $end';
   }
 
-  String _fmt(DateTime d) {
-    const months = [
-      'jan', 'fév', 'mar', 'avr', 'mai', 'juin',
-      'juil', 'août', 'sep', 'oct', 'nov', 'déc',
-    ];
-    return '${d.day} ${months[d.month - 1]} ${d.year}';
+  String _fmt(DateTime d, String locale) {
+    final icuLocale = locale.startsWith('tzm') ? 'fr' : locale;
+    return intl.DateFormat.yMMMd(icuLocale).format(d);
   }
 
   String _time(DateTime d) =>

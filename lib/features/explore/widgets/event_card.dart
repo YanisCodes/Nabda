@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 
 import '../../../core/theme/app_theme.dart';
 import '../../../data/models/event.dart';
@@ -14,6 +15,7 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final locale = Localizations.localeOf(context).toString();
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -53,7 +55,7 @@ class EventCard extends StatelessWidget {
                           size: 13, color: AppColors.textSecondary),
                       const SizedBox(width: 4),
                       Text(
-                        _formatDate(event.dateStart),
+                        _formatDate(event.dateStart, locale),
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: AppColors.textSecondary,
                         ),
@@ -79,12 +81,9 @@ class EventCard extends StatelessWidget {
     );
   }
 
-  String _formatDate(DateTime d) {
-    const months = [
-      'jan', 'fév', 'mar', 'avr', 'mai', 'juin',
-      'juil', 'août', 'sep', 'oct', 'nov', 'déc',
-    ];
-    return '${d.day} ${months[d.month - 1]} ${d.year}';
+  String _formatDate(DateTime d, String locale) {
+    final icuLocale = locale.startsWith('tzm') ? 'fr' : locale;
+    return intl.DateFormat.yMMMd(icuLocale).format(d);
   }
 }
 

@@ -40,7 +40,7 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 4 — Écran Explorer (données mockées)
 
-*L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", juste une liste filtrée.*
+_L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", juste une liste filtrée._
 
 - [x] **T13** Créer `lib/features/explore/explore_provider.dart` : provider qui retourne les événements mockés filtrés par catégorie sélectionnée
 - [x] **T14** Créer `lib/features/explore/explore_screen.dart` : liste d'événements avec chips de catégorie (Tout / Formation / Sport / Culture / Écologie / Volontariat)
@@ -104,7 +104,7 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 
 ## PHASE 10 — Supabase (réseau)
 
-- [x] **T33** Créer le projet Supabase, exécuter le SQL de création des tables (voir spec.md)
+- [ ] **T33** Créer le projet Supabase, exécuter le SQL de création des tables (voir spec.md)
 - [ ] **T34** Insérer 10 événements réels et 5 centres dans Supabase via le dashboard
 - [x] **T35** Créer `lib/data/remote/supabase_client.dart` et `lib/data/sync/sync_service.dart`
 - [x] **T36** Logique sync : au démarrage, si `last_sync > 24h` → fetch delta Supabase → upsert SQLite
@@ -119,7 +119,7 @@ Un écran fonctionnel vaut mieux que trois écrans vides.
 - [x] **T38** Configurer `flutter_localizations` dans `pubspec.yaml` et `main.dart`
 - [x] **T39** Créer `lib/l10n/app_fr.arb`, `app_ar.arb`, `app_tz.arb` avec toutes les chaînes UI
 - [x] **T40** Remplacer toutes les strings hardcodées par `AppLocalizations.of(context).xxx`
-- [x] **T41** Tester le RTL avec la langue arabe
+- [ ] **T41** Tester le RTL avec la langue arabe
 
 **Livrable T38→T41 :** app complètement traduite, RTL fonctionnel en arabe.
 

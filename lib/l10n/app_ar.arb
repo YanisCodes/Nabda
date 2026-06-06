@@ -56,5 +56,14 @@
   "actionDelete": "مسح",
 
   "screenTitleMap": "مراكز ODEJ",
-  "btnContact": "اتصل"
+  "btnContact": "اتصل",
+
+  "hintSearch": "ابحث عن حدث...",
+  "noSearchResults": "لا توجد نتائج لهذا البحث.",
+  "btnViewOnMap": "عرض على الخريطة",
+  "filterAllCities": "كل الولايات",
+  "sectionInterests": "مراكز الاهتمام",
+  "sectionForYou": "لك أنت",
+  "labelSoon": "قريباً",
+  "labelOngoing": "جارٍ الآن"
 }

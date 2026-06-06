@@ -57,5 +57,14 @@
   "actionDelete": "Effacer",
 
   "screenTitleMap": "Centres ODEJ",
-  "btnContact": "Contacter"
+  "btnContact": "Contacter",
+
+  "hintSearch": "Rechercher un événement...",
+  "noSearchResults": "Aucun résultat pour cette recherche.",
+  "btnViewOnMap": "Voir sur la carte",
+  "filterAllCities": "Toutes les villes",
+  "sectionInterests": "Centres d'intérêt",
+  "sectionForYou": "Pour vous",
+  "labelSoon": "Bientôt",
+  "labelOngoing": "En cours"
 }

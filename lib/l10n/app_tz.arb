@@ -56,5 +56,14 @@
   "actionDelete": "Kkes",
 
   "screenTitleMap": "Imaẓayen n ODEJ",
-  "btnContact": "Muqel"
+  "btnContact": "Muqel",
+
+  "hintSearch": "Nadi amunas...",
+  "noSearchResults": "Ulac anaẓur i unadi·a.",
+  "btnViewOnMap": "Wali deg tasedwit",
+  "filterAllCities": "Meṛṛa timendawin",
+  "sectionInterests": "Iswi·nnek",
+  "sectionForYou": "I kem/kek",
+  "labelSoon": "Seld",
+  "labelOngoing": "Tura"
 }

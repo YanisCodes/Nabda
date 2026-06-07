@@ -36,16 +36,16 @@ class Center {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
-        'city': city,
-        'address': address,
-        'lat': lat,
-        'lng': lng,
-        'phone': phone,
-        'hours': hours,
-        'created_at': createdAt.toIso8601String(),
-      };
+    'id': id,
+    'name': name,
+    'city': city,
+    'address': address,
+    'lat': lat,
+    'lng': lng,
+    'phone': phone,
+    'hours': hours,
+    'created_at': createdAt.toIso8601String(),
+  };
 
   Center copyWith({
     String? id,

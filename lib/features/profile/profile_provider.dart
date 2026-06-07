@@ -26,13 +26,12 @@ class ProfileState {
     AppLanguage? language,
     Set<EventCategory>? interests,
     bool? isSaving,
-  }) =>
-      ProfileState(
-        city: city ?? this.city,
-        language: language ?? this.language,
-        interests: interests ?? this.interests,
-        isSaving: isSaving ?? this.isSaving,
-      );
+  }) => ProfileState(
+    city: city ?? this.city,
+    language: language ?? this.language,
+    interests: interests ?? this.interests,
+    isSaving: isSaving ?? this.isSaving,
+  );
 }
 
 class ProfileNotifier extends Notifier<ProfileState> {
@@ -81,5 +80,6 @@ class ProfileNotifier extends Notifier<ProfileState> {
   }
 }
 
-final profileProvider =
-    NotifierProvider<ProfileNotifier, ProfileState>(ProfileNotifier.new);
+final profileProvider = NotifierProvider<ProfileNotifier, ProfileState>(
+  ProfileNotifier.new,
+);

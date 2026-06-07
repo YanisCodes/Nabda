@@ -40,8 +40,16 @@ dependencies:
   # Liens externes (téléphone, email)
   url_launcher: ^6.3.1
 
+  # Share
+  share_plus: ^13.1.0
+
   # UI
   cupertino_icons: ^1.0.8
+  add_2_calendar: ^3.0.1
+
+  # Local notifications
+  flutter_local_notifications: ^18.0.0
+  timezone: ^0.10.0
 
 dev_dependencies:
   flutter_test:

@@ -4,11 +4,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../l10n/app_localizations.dart';
 
 class SectionHeader extends StatelessWidget {
-  const SectionHeader({
-    super.key,
-    required this.title,
-    this.onSeeAll,
-  });
+  const SectionHeader({super.key, required this.title, this.onSeeAll});
 
   final String title;
   final VoidCallback? onSeeAll;
@@ -24,21 +20,34 @@ class SectionHeader extends StatelessWidget {
           Text(
             title,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppColors.textPrimary,
-                  fontWeight: FontWeight.w600,
-                ),
+              color: AppColors.textPrimary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           const Spacer(),
           if (onSeeAll != null)
             GestureDetector(
               onTap: onSeeAll,
-              child: Text(
-                l10n.actionSeeAll,
-                style: const TextStyle(
-                  color: AppColors.green,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    l10n.actionSeeAll,
+                    style: const TextStyle(
+                      color: AppColors.green,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(width: 2),
+                  Icon(
+                    Directionality.of(context) == TextDirection.rtl
+                        ? Icons.chevron_left_rounded
+                        : Icons.chevron_right_rounded,
+                    size: 16,
+                    color: AppColors.green,
+                  ),
+                ],
               ),
             ),
         ],

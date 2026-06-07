@@ -66,5 +66,20 @@
   "sectionInterests": "Centres d'intérêt",
   "sectionForYou": "Pour vous",
   "labelSoon": "Bientôt",
-  "labelOngoing": "En cours"
+  "labelOngoing": "En cours",
+  "navSaved": "Favoris",
+  "noSavedEvents": "Aucun événement sauvegardé.",
+  "btnAddToCalendar": "Ajouter au calendrier",
+  "filterAllDates": "Toutes",
+  "filterToday": "Aujourd'hui",
+  "filterThisWeek": "Cette semaine",
+  "filterThisMonth": "Ce mois",
+  "btnReportProblem": "Signaler un problème",
+  "btnReportEvent": "Signaler un problème avec cet événement",
+  "errorCantOpenEmail": "Impossible d'ouvrir l'application e-mail",
+  "btnSetReminder": "Me rappeler",
+  "btnReminderSet": "Rappel programmé",
+  "snackReminderSet": "Rappel programmé 1h avant l'événement",
+  "snackReminderRemoved": "Rappel annulé",
+  "snackReminderTooLate": "L'événement est trop proche pour un rappel"
 }

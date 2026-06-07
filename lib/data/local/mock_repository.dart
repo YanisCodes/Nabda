@@ -8,10 +8,7 @@ import '../models/event_category.dart';
 class MockRepository {
   const MockRepository._();
 
-  static List<Event> getEvents({
-    EventCategory? category,
-    String? city,
-  }) {
+  static List<Event> getEvents({EventCategory? category, String? city}) {
     var events = List<Event>.from(kMockEvents);
 
     if (category != null) {

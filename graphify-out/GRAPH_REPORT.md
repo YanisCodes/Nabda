@@ -1,16 +1,16 @@
 # Graph Report - nabda-better  (2026-06-06)
 
 ## Corpus Check
-- 84 files · ~36,839 words
+- 84 files · ~36,999 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1101 nodes · 1419 edges · 73 communities (62 shown, 11 thin omitted)
+- 1113 nodes · 1438 edges · 73 communities (62 shown, 11 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9a01d2e6`
+- Built from commit: `f8924f6d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -101,8 +101,8 @@
   lib/features/home/home_provider.dart → lib/data/local/preferences.dart
 - `build` --references--> `preferencesProvider`  [EXTRACTED]
   lib/features/home/home_screen.dart → lib/data/local/preferences.dart
-- `HomeNotifier` --references--> `eventsListProvider`  [EXTRACTED]
-  lib/features/home/home_provider.dart → lib/data/local/data_providers.dart
+- `_HomeScreenState` --inherits--> `state`  [EXTRACTED]
+  lib/features/home/home_screen.dart → lib/features/onboarding/onboarding_screen.dart
 
 ## Import Cycles
 - None detected.
@@ -170,8 +170,8 @@ Cohesion: 0.29
 Nodes (3): RunnerTests, RunnerTests, XCTestCase
 
 ### Community 12 - "Android Launcher Icons"
-Cohesion: 0.12
-Nodes (16): data/local/database.dart, data/remote/supabase_client.dart, ../../data/sync/sync_service.dart, features/home/home_screen.dart, features/onboarding/onboarding_screen.dart, allCenters, allEvents, container (+8 more)
+Cohesion: 0.06
+Nodes (32): class, CupertinoLocalizations, data/local/database.dart, data/remote/supabase_client.dart, data/sync/sync_service.dart, features/home/home_screen.dart, features/onboarding/onboarding_screen.dart, _AppLocalizationsDelegate (+24 more)
 
 ### Community 13 - "iOS LLDB Debug Helper"
 Cohesion: 0.33
@@ -199,11 +199,11 @@ Nodes (29): 1. Accueil intelligent, 2. Explorer les opportunités, 3. Carte inte
 
 ### Community 24 - "Windows Build Config"
 Cohesion: 0.03
-Nodes (68): app_localizations_ar.dart, app_localizations_fr.dart, app_localizations_tzm.dart, class, dart:async, actionCancel, actionDelete, actionSeeAll (+60 more)
+Nodes (66): app_localizations_ar.dart, app_localizations_fr.dart, app_localizations_tzm.dart, dart:async, actionCancel, actionDelete, actionSeeAll, appName (+58 more)
 
 ### Community 25 - "Misc Platform Code"
-Cohesion: 0.27
-Nodes (15): build, OtejApp, localeProvider, preferencesProvider, localeProvider, build, MapScreen, Notifier (+7 more)
+Cohesion: 0.39
+Nodes (12): build, OtejApp, localeProvider, preferencesProvider, localeProvider, complete, OnboardingNotifier, preferencesProvider (+4 more)
 
 ### Community 31 - "Misc Platform Code"
 Cohesion: 0.09
@@ -222,8 +222,8 @@ Cohesion: 0.15
 Nodes (12): Approche de dev, Architecture, Context navigation, Contexte du projet, Conventions, Environnement, Fichiers clés, Interdictions (+4 more)
 
 ### Community 43 - "Community 43"
-Cohesion: 0.10
-Nodes (20): ../explore/explore_screen.dart, ../explore/widgets/event_card.dart, actionLabel, center, centers, city, createState, _currentIndex (+12 more)
+Cohesion: 0.09
+Nodes (21): ../explore/explore_screen.dart, ../explore/widgets/event_card.dart, actionLabel, center, centers, city, createState, _currentIndex (+13 more)
 
 ### Community 44 - "Community 44"
 Cohesion: 0.09
@@ -251,7 +251,7 @@ Nodes (8): event_category.dart, Category, icon, id, localizedName, nameAr, nameF
 
 ### Community 50 - "Community 50"
 Cohesion: 0.25
-Nodes (7): ../../core/theme/app_theme.dart, ../../l10n/app_localizations.dart, VoidCallback, build, onSeeAll, SectionHeader, title
+Nodes (7): core/theme/app_theme.dart, l10n/app_localizations.dart, VoidCallback, build, onSeeAll, SectionHeader, title
 
 ### Community 51 - "Community 51"
 Cohesion: 0.40
@@ -274,7 +274,7 @@ Nodes (34): _, @DriftAccessor, @DriftDatabase, _$CentersDaoMixin, kCategories, k
 
 ### Community 55 - "Community 55"
 Cohesion: 0.11
-Nodes (17): IconData, _buildMarker, center, _CenterSheet, _dialPhone, focusCenter, focusCity, focused (+9 more)
+Nodes (18): IconData, build, _buildMarker, center, _CenterSheet, _dialPhone, focusCenter, focusCity (+10 more)
 
 ### Community 56 - "Community 56"
 Cohesion: 0.25
@@ -297,12 +297,12 @@ Cohesion: 0.20
 Nodes (9): Center, languageToLocale, prefs, Locale, ../models/app_language.dart, ../models/center.dart, ../models/event.dart, package:flutter/widgets.dart (+1 more)
 
 ### Community 61 - "Community 61"
-Cohesion: 0.10
-Nodes (22): ../../core/constants/env.dart, databaseProvider, ../local/data_providers.dart, ../local/database.dart, package:flutter_riverpod/flutter_riverpod.dart, package:supabase_flutter/supabase_flutter.dart, initialize, initSupabase (+14 more)
+Cohesion: 0.08
+Nodes (27): ../../core/constants/env.dart, databaseProvider, homeProvider, build, _HomeContent, homeProvider, ../local/data_providers.dart, ../local/database.dart (+19 more)
 
 ### Community 64 - "Community 64"
 Cohesion: 0.06
-Nodes (50): ConsumerWidget, ../../core/constants/wilayas.dart, ../home/home_screen.dart, HomeScreen, _HomeScreenState, onboardingProvider, build, _CityDropdown (+42 more)
+Nodes (51): ConsumerWidget, ../../core/constants/wilayas.dart, ../home/home_screen.dart, HomeScreen, _HomeScreenState, MapScreen, onboardingProvider, build (+43 more)
 
 ### Community 65 - "Community 65"
 Cohesion: 0.29
@@ -313,31 +313,31 @@ Cohesion: 0.33
 Nodes (5): Env, isConfigured, supabaseAnonKey, supabaseUrl, static bool get
 
 ### Community 67 - "Community 67"
-Cohesion: 0.53
-Nodes (6): homeProvider, build, _HomeContent, homeProvider, syncServiceProvider, syncServiceProvider
+Cohesion: 0.21
+Nodes (16): centersListProvider, eventsListProvider, build, ExploreNotifier, ExploreState, selectCategory, selectCity, setSearch (+8 more)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.15
-Nodes (18): ../../data/local/mock_repository.dart, EventCategory, eventsListProvider, availableCities, build, events, ExploreNotifier, ExploreState (+10 more)
+Cohesion: 0.20
+Nodes (9): EventCategory, availableCities, events, _extractCities, _filter, searchQuery, selectedCategory, selectedCity (+1 more)
 
 ### Community 69 - "Community 69"
 Cohesion: 0.15
 Nodes (12): ../home/home_provider.dart, city, copyWith, hasChanges, interests, isSaving, language, ProfileState (+4 more)
 
 ### Community 70 - "Community 70"
-Cohesion: 0.33
-Nodes (7): AppLocalizations, _AppLocalizationsDelegate, AppLocalizationsAr, AppLocalizationsFr, of, AppLocalizationsTzm, LocalizationsDelegate
+Cohesion: 0.50
+Nodes (5): AppLocalizations, AppLocalizationsAr, AppLocalizationsFr, of, AppLocalizationsTzm
 
 ### Community 71 - "Community 71"
-Cohesion: 0.16
-Nodes (14): centersListProvider, ../../data/local/data_providers.dart, EventDetailScreen, build, centers, city, cityHasEvents, HomeNotifier (+6 more)
+Cohesion: 0.20
+Nodes (9): data/local/data_providers.dart, ../../data/local/mock_repository.dart, data/local/preferences.dart, centers, city, cityHasEvents, isPersonalized, _sortByInterests (+1 more)
 
 ### Community 72 - "Community 72"
-Cohesion: 0.15
-Nodes (12): AppLanguage, bool get, ../../data/local/preferences.dart, build, city, copyWith, isSaving, isValid (+4 more)
+Cohesion: 0.17
+Nodes (11): AppLanguage, bool get, build, city, copyWith, isSaving, isValid, language (+3 more)
 
 ## Knowledge Gaps
-- **665 isolated node(s):** `Preferences`, `_prefs`, `_kCity`, `_kLang`, `_kInterests` (+660 more)
+- **669 isolated node(s):** `sharedPrefs`, `preferences`, `db`, `allEvents`, `allCenters` (+664 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -345,13 +345,13 @@ Nodes (12): AppLanguage, bool get, ../../data/local/preferences.dart, build, cit
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `_` connect `Community 46` to `Misc Platform Code`, `Community 68`, `Flutter App Entry Point`, `Community 54`, `Community 56`?**
-  _High betweenness centrality (0.121) - this node is a cross-community bridge._
+  _High betweenness centrality (0.129) - this node is a cross-community bridge._
 - **Why does `EventCategory` connect `Community 52` to `OTEJ Link Product & Architecture`, `Community 68`, `Community 45`, `Community 49`, `Windows Plugin Registry`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
-- **Why does `AppLocalizations` connect `Community 70` to `Windows Build Config`, `Community 44`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
-- **What connects `Preferences`, `_prefs`, `_kCity` to the rest of the system?**
-  _666 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `AppLanguage` connect `Flutter App Entry Point` to `Community 72`, `Community 64`, `Windows Plugin Registry`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **What connects `sharedPrefs`, `preferences`, `db` to the rest of the system?**
+  _670 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Windows Desktop Runner` be split into smaller, more focused modules?**
   _Cohesion score 0.08658536585365853 - nodes in this community are weakly interconnected._
 - **Should `OTEJ Link Product & Architecture` be split into smaller, more focused modules?**

@@ -60,7 +60,10 @@ class MapScreen extends ConsumerWidget {
   }
 
   /// Priorité : focusCenter → focusCity → ville du profil → centre Algérie.
-  (LatLng, double) _initialView(String? profileCity, List<model.Center> centers) {
+  (LatLng, double) _initialView(
+    String? profileCity,
+    List<model.Center> centers,
+  ) {
     if (focusCenter != null) {
       return (LatLng(focusCenter!.lat, focusCenter!.lng), 13.0);
     }
@@ -102,7 +105,10 @@ class _PinIcon extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withValues(alpha: 0.9), width: 2),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.9),
+          width: 2,
+        ),
         boxShadow: [
           BoxShadow(
             color: color.withValues(alpha: focused ? 0.7 : 0.5),
@@ -204,9 +210,9 @@ class _SheetRow extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
         ),
       ],

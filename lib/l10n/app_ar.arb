@@ -65,5 +65,20 @@
   "sectionInterests": "مراكز الاهتمام",
   "sectionForYou": "لك أنت",
   "labelSoon": "قريباً",
-  "labelOngoing": "جارٍ الآن"
+  "labelOngoing": "جارٍ الآن",
+  "navSaved": "المفضلة",
+  "noSavedEvents": "لا توجد أحداث محفوظة.",
+  "btnAddToCalendar": "أضف إلى التقويم",
+  "filterAllDates": "الكل",
+  "filterToday": "اليوم",
+  "filterThisWeek": "هذا الأسبوع",
+  "filterThisMonth": "هذا الشهر",
+  "btnReportProblem": "الإبلاغ عن مشكلة",
+  "btnReportEvent": "الإبلاغ عن مشكلة في هذا الحدث",
+  "errorCantOpenEmail": "تعذّر فتح تطبيق البريد الإلكتروني",
+  "btnSetReminder": "ذكّرني",
+  "btnReminderSet": "تذكير مُفعّل",
+  "snackReminderSet": "تم ضبط التذكير قبل ساعة من الحدث",
+  "snackReminderRemoved": "تم إلغاء التذكير",
+  "snackReminderTooLate": "الحدث قريب جداً لضبط تذكير"
 }

@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../../../core/theme/app_theme.dart';
+import '../../../core/utils/animations.dart';
 import '../../../data/models/event.dart';
 import '../../../data/models/event_category.dart';
 import '../../../data/models/event_timing.dart';
 import '../../../l10n/app_localizations.dart';
 
 class EventCard extends StatelessWidget {
-  const EventCard({super.key, required this.event, this.onTap});
+  const EventCard({
+    super.key,
+    required this.event,
+    this.onTap,
+    this.isFavorite = false,
+    this.onToggleFavorite,
+  });
 
   final Event event;
   final VoidCallback? onTap;
+  final bool isFavorite;
+  final VoidCallback? onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +28,18 @@ class EventCard extends StatelessWidget {
     final locale = Localizations.localeOf(context).toString();
     final timing = event.timingStatus;
 
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+    return TapScale(
+      onTap: onTap,
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _ImagePlaceholder(category: event.category),
+            _ImagePlaceholder(
+              category: event.category,
+              isFavorite: isFavorite,
+              onToggleFavorite: onToggleFavorite,
+            ),
             Padding(
               padding: const EdgeInsets.all(14),
               child: Column(
@@ -58,8 +70,11 @@ class EventCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(Icons.calendar_today_outlined,
-                          size: 13, color: AppColors.textSecondary),
+                      const Icon(
+                        Icons.calendar_today_outlined,
+                        size: 13,
+                        color: AppColors.textSecondary,
+                      ),
                       const SizedBox(width: 4),
                       Flexible(
                         child: Text(
@@ -71,8 +86,11 @@ class EventCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 14),
-                      const Icon(Icons.location_on_outlined,
-                          size: 13, color: AppColors.textSecondary),
+                      const Icon(
+                        Icons.location_on_outlined,
+                        size: 13,
+                        color: AppColors.textSecondary,
+                      ),
                       const SizedBox(width: 4),
                       Flexible(
                         child: Text(
@@ -101,42 +119,77 @@ class EventCard extends StatelessWidget {
 }
 
 class _ImagePlaceholder extends StatelessWidget {
-  const _ImagePlaceholder({required this.category});
+  const _ImagePlaceholder({
+    required this.category,
+    this.isFavorite = false,
+    this.onToggleFavorite,
+  });
   final EventCategory category;
+  final bool isFavorite;
+  final VoidCallback? onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-      child: Container(
-        height: 130,
-        color: _bgColor(category),
-        child: Center(
-          child: Icon(
-            _icon(category),
-            size: 52,
-            color: Colors.white.withValues(alpha: 0.2),
+      child: Stack(
+        children: [
+          Container(
+            height: 140,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.topStart,
+                end: AlignmentDirectional.bottomEnd,
+                colors: [
+                  Color.lerp(_bgColor(category), Colors.white, 0.07)!,
+                  _bgColor(category),
+                ],
+              ),
+            ),
+            child: Center(
+              child: Icon(
+                _icon(category),
+                size: 56,
+                color: Colors.white.withValues(alpha: 0.08),
+              ),
+            ),
           ),
-        ),
+          if (onToggleFavorite != null)
+            Positioned(
+              top: 8,
+              right: 8,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.25),
+                  shape: BoxShape.circle,
+                ),
+                child: AnimatedFavoriteIcon(
+                  isFavorite: isFavorite,
+                  onTap: onToggleFavorite,
+                  size: 20,
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
 
   Color _bgColor(EventCategory c) => switch (c) {
-        EventCategory.formation => const Color(0xFF1A3A5C),
-        EventCategory.sport => const Color(0xFF1A4A2E),
-        EventCategory.culture => const Color(0xFF3A1A4A),
-        EventCategory.ecologie => const Color(0xFF1A4A20),
-        EventCategory.volontariat => const Color(0xFF4A2A1A),
-      };
+    EventCategory.formation => const Color(0xFF1A3A5C),
+    EventCategory.sport => const Color(0xFF1A4A2E),
+    EventCategory.culture => const Color(0xFF3A1A4A),
+    EventCategory.ecologie => const Color(0xFF1A4A20),
+    EventCategory.volontariat => const Color(0xFF4A2A1A),
+  };
 
   IconData _icon(EventCategory c) => switch (c) {
-        EventCategory.formation => Icons.school_rounded,
-        EventCategory.sport => Icons.sports_soccer_rounded,
-        EventCategory.culture => Icons.theater_comedy_rounded,
-        EventCategory.ecologie => Icons.eco_rounded,
-        EventCategory.volontariat => Icons.volunteer_activism_rounded,
-      };
+    EventCategory.formation => Icons.school_rounded,
+    EventCategory.sport => Icons.sports_soccer_rounded,
+    EventCategory.culture => Icons.theater_comedy_rounded,
+    EventCategory.ecologie => Icons.eco_rounded,
+    EventCategory.volontariat => Icons.volunteer_activism_rounded,
+  };
 }
 
 class _TimingBadge extends StatelessWidget {
@@ -186,14 +239,17 @@ class _CategoryBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final (label, color) = switch (category) {
-      EventCategory.formation =>
-        (l10n.categoryFormation, const Color(0xFF1565C0)),
+      EventCategory.formation => (
+        l10n.categoryFormation,
+        const Color(0xFF1565C0),
+      ),
       EventCategory.sport => (l10n.categorySport, const Color(0xFF2E7D32)),
-      EventCategory.culture =>
-        (l10n.categoryCulture, const Color(0xFF6A1B9A)),
+      EventCategory.culture => (l10n.categoryCulture, const Color(0xFF6A1B9A)),
       EventCategory.ecologie => (l10n.categoryEcologie, AppColors.green),
-      EventCategory.volontariat =>
-        (l10n.categoryVolontariat, const Color(0xFFBF360C)),
+      EventCategory.volontariat => (
+        l10n.categoryVolontariat,
+        const Color(0xFFBF360C),
+      ),
     };
 
     return Container(

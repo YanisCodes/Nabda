@@ -166,4 +166,49 @@ class AppLocalizationsTzm extends AppLocalizations {
 
   @override
   String get labelOngoing => 'Tura';
+
+  @override
+  String get navSaved => 'Iḥerraz';
+
+  @override
+  String get noSavedEvents => 'Ulac imunas yettwaḥerzen.';
+
+  @override
+  String get btnAddToCalendar => 'Rnu ɣer wawalen';
+
+  @override
+  String get filterAllDates => 'Meṛṛa';
+
+  @override
+  String get filterToday => 'Ass-a';
+
+  @override
+  String get filterThisWeek => 'Dduṛt-a';
+
+  @override
+  String get filterThisMonth => 'Aggur-a';
+
+  @override
+  String get btnReportProblem => 'Ini-d ugur';
+
+  @override
+  String get btnReportEvent => 'Ini-d ugur ɣef umunas-a';
+
+  @override
+  String get errorCantOpenEmail => 'Ur zemreɣ ara ad ldiɣ email';
+
+  @override
+  String get btnSetReminder => 'Smekti-yi-d';
+
+  @override
+  String get btnReminderSet => 'Asmekti yella';
+
+  @override
+  String get snackReminderSet => 'Asmekti yettwarmed 1h send amunas';
+
+  @override
+  String get snackReminderRemoved => 'Asmekti yettwakkes';
+
+  @override
+  String get snackReminderTooLate => 'Amunas d aqrib aṭas i usmekti';
 }

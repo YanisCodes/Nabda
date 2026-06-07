@@ -7,6 +7,8 @@ import '../../core/theme/app_theme.dart';
 import '../../data/models/app_language.dart';
 import '../../data/models/event_category.dart';
 import '../../l10n/app_localizations.dart';
+import '../favorites/favorites_provider.dart';
+import '../feedback/feedback_helper.dart';
 import '../onboarding/onboarding_screen.dart';
 import 'profile_provider.dart';
 
@@ -44,6 +46,10 @@ class ProfileScreen extends ConsumerWidget {
             const SizedBox(height: 36),
             _SaveButton(state: state, label: l10n.btnSave),
             const SizedBox(height: 32),
+            const Divider(),
+            const SizedBox(height: 24),
+            const _FeedbackButton(),
+            const SizedBox(height: 24),
             const Divider(),
             const SizedBox(height: 24),
             _DangerZone(),
@@ -88,8 +94,11 @@ class _CityDropdown extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
-          const Icon(Icons.location_on_outlined,
-              color: AppColors.green, size: 20),
+          const Icon(
+            Icons.location_on_outlined,
+            color: AppColors.green,
+            size: 20,
+          ),
           const SizedBox(width: 8),
           Expanded(
             child: DropdownButton<String>(
@@ -104,14 +113,17 @@ class _CityDropdown extends ConsumerWidget {
               ),
               hint: Text(
                 hint,
-                style:
-                    const TextStyle(color: AppColors.textDisabled, fontSize: 15),
+                style: const TextStyle(
+                  color: AppColors.textDisabled,
+                  fontSize: 15,
+                ),
               ),
               items: kWilayas.map((w) {
                 return DropdownMenuItem<String>(
                   value: w.nameFr,
                   child: Text(
-                      '${w.code.toString().padLeft(2, '0')} — ${w.nameFr}'),
+                    '${w.code.toString().padLeft(2, '0')} — ${w.nameFr}',
+                  ),
                 );
               }).toList(),
               onChanged: (value) {
@@ -176,7 +188,9 @@ class _LangChip extends ConsumerWidget {
           duration: const Duration(milliseconds: 150),
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: selected ? AppColors.greenDark : AppColors.surfaceVariantDark,
+            color: selected
+                ? AppColors.greenDark
+                : AppColors.surfaceVariantDark,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: selected ? AppColors.green : AppColors.borderDark,
@@ -215,8 +229,7 @@ class _InterestsSelector extends ConsumerWidget {
               ref.read(profileProvider.notifier).toggleInterest(cat.id),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
             decoration: BoxDecoration(
               color: isSelected
                   ? AppColors.amberDark.withValues(alpha: 0.25)
@@ -233,9 +246,7 @@ class _InterestsSelector extends ConsumerWidget {
                 Icon(
                   _categoryIcon(cat.id),
                   size: 15,
-                  color: isSelected
-                      ? AppColors.amber
-                      : AppColors.textSecondary,
+                  color: isSelected ? AppColors.amber : AppColors.textSecondary,
                 ),
                 const SizedBox(width: 6),
                 Text(
@@ -245,9 +256,7 @@ class _InterestsSelector extends ConsumerWidget {
                         ? AppColors.amber
                         : AppColors.textSecondary,
                     fontSize: 13,
-                    fontWeight: isSelected
-                        ? FontWeight.w600
-                        : FontWeight.w400,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   ),
                 ),
               ],
@@ -259,12 +268,12 @@ class _InterestsSelector extends ConsumerWidget {
   }
 
   IconData _categoryIcon(EventCategory cat) => switch (cat) {
-        EventCategory.formation => Icons.school_rounded,
-        EventCategory.sport => Icons.sports_soccer_rounded,
-        EventCategory.culture => Icons.theater_comedy_rounded,
-        EventCategory.ecologie => Icons.eco_rounded,
-        EventCategory.volontariat => Icons.volunteer_activism_rounded,
-      };
+    EventCategory.formation => Icons.school_rounded,
+    EventCategory.sport => Icons.sports_soccer_rounded,
+    EventCategory.culture => Icons.theater_comedy_rounded,
+    EventCategory.ecologie => Icons.eco_rounded,
+    EventCategory.volontariat => Icons.volunteer_activism_rounded,
+  };
 
   String _categoryLabel(AppLocalizations l10n, EventCategory cat) =>
       switch (cat) {
@@ -305,6 +314,33 @@ class _SaveButton extends ConsumerWidget {
   }
 }
 
+class _FeedbackButton extends StatelessWidget {
+  const _FeedbackButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return OutlinedButton.icon(
+      onPressed: () => _sendFeedback(context),
+      icon: const Icon(Icons.feedback_outlined, size: 18),
+      label: Text(l10n.btnReportProblem),
+    );
+  }
+
+  Future<void> _sendFeedback(BuildContext context) async {
+    if (!await launchFeedbackEmail()) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context).errorCantOpenEmail),
+          ),
+        );
+      }
+    }
+  }
+}
+
 class _DangerZone extends ConsumerWidget {
   const _DangerZone();
 
@@ -318,15 +354,18 @@ class _DangerZone extends ConsumerWidget {
         Text(
           l10n.sectionDangerZone,
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: AppColors.textSecondary,
-                fontWeight: FontWeight.w600,
-              ),
+            color: AppColors.textSecondary,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () => _confirmClear(context, ref),
-          icon: const Icon(Icons.delete_outline_rounded,
-              size: 18, color: AppColors.error),
+          icon: const Icon(
+            Icons.delete_outline_rounded,
+            size: 18,
+            color: AppColors.error,
+          ),
           label: Text(
             l10n.btnClearData,
             style: const TextStyle(color: AppColors.error),
@@ -364,6 +403,7 @@ class _DangerZone extends ConsumerWidget {
     ).then((confirmed) async {
       if (confirmed != true) return;
       await ref.read(profileProvider.notifier).clearAll();
+      ref.read(favoritesProvider.notifier).clear();
       if (!context.mounted) return;
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => const OnboardingScreen()),

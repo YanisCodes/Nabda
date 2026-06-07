@@ -63,9 +63,7 @@ class SyncService extends Notifier<bool> {
 
     if (rows.isEmpty) return;
 
-    await db.eventsDao.upsertAll(
-      rows.map(_rowToEventCompanion).toList(),
-    );
+    await db.eventsDao.upsertAll(rows.map(_rowToEventCompanion).toList());
     await _updateSyncMeta(db, 'events');
   }
 
@@ -80,9 +78,7 @@ class SyncService extends Notifier<bool> {
 
     if (rows.isEmpty) return;
 
-    await db.centersDao.upsertAll(
-      rows.map(_rowToCenterCompanion).toList(),
-    );
+    await db.centersDao.upsertAll(rows.map(_rowToCenterCompanion).toList());
     await _updateSyncMeta(db, 'centers');
   }
 
@@ -95,19 +91,21 @@ class SyncService extends Notifier<bool> {
   }
 
   Future<DateTime?> _lastSync(AppDatabase db, String entity) async {
-    final row = await (db.select(db.syncMeta)
-          ..where((t) => t.entity.equals(entity)))
-        .getSingleOrNull();
+    final row = await (db.select(
+      db.syncMeta,
+    )..where((t) => t.entity.equals(entity))).getSingleOrNull();
     return row?.lastSync;
   }
 
   Future<void> _updateSyncMeta(AppDatabase db, String entity) async {
-    await db.into(db.syncMeta).insertOnConflictUpdate(
-      SyncMetaCompanion(
-        entity: Value(entity),
-        lastSync: Value(DateTime.now()),
-      ),
-    );
+    await db
+        .into(db.syncMeta)
+        .insertOnConflictUpdate(
+          SyncMetaCompanion(
+            entity: Value(entity),
+            lastSync: Value(DateTime.now()),
+          ),
+        );
   }
 
   // ─── Refresh providers après sync ────────────────────────────────────────────
@@ -130,9 +128,7 @@ class SyncService extends Notifier<bool> {
       category: Value(r['category'] as String),
       dateStart: Value(DateTime.parse(r['date_start'] as String)),
       dateEnd: Value(
-        r['date_end'] != null
-            ? DateTime.parse(r['date_end'] as String)
-            : null,
+        r['date_end'] != null ? DateTime.parse(r['date_end'] as String) : null,
       ),
       centerId: Value(r['center_id'] as String?),
       isFree: Value(r['is_free'] as bool),
@@ -157,5 +153,6 @@ class SyncService extends Notifier<bool> {
   }
 }
 
-final syncServiceProvider =
-    NotifierProvider<SyncService, bool>(SyncService.new);
+final syncServiceProvider = NotifierProvider<SyncService, bool>(
+  SyncService.new,
+);

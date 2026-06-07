@@ -165,4 +165,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get labelOngoing => 'جارٍ الآن';
+
+  @override
+  String get navSaved => 'المفضلة';
+
+  @override
+  String get noSavedEvents => 'لا توجد أحداث محفوظة.';
+
+  @override
+  String get btnAddToCalendar => 'أضف إلى التقويم';
+
+  @override
+  String get filterAllDates => 'الكل';
+
+  @override
+  String get filterToday => 'اليوم';
+
+  @override
+  String get filterThisWeek => 'هذا الأسبوع';
+
+  @override
+  String get filterThisMonth => 'هذا الشهر';
+
+  @override
+  String get btnReportProblem => 'الإبلاغ عن مشكلة';
+
+  @override
+  String get btnReportEvent => 'الإبلاغ عن مشكلة في هذا الحدث';
+
+  @override
+  String get errorCantOpenEmail => 'تعذّر فتح تطبيق البريد الإلكتروني';
+
+  @override
+  String get btnSetReminder => 'ذكّرني';
+
+  @override
+  String get btnReminderSet => 'تذكير مُفعّل';
+
+  @override
+  String get snackReminderSet => 'تم ضبط التذكير قبل ساعة من الحدث';
+
+  @override
+  String get snackReminderRemoved => 'تم إلغاء التذكير';
+
+  @override
+  String get snackReminderTooLate => 'الحدث قريب جداً لضبط تذكير';
 }

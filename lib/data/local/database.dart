@@ -121,37 +121,38 @@ class AppDatabase extends _$AppDatabase {
 
 extension EventRowX on EventRow {
   Event toModel() => Event(
-        id: id,
-        title: title,
-        description: description,
-        city: city,
-        category: EventCategory.fromString(category),
-        dateStart: dateStart,
-        dateEnd: dateEnd,
-        centerId: centerId,
-        isFree: isFree,
-        imageUrl: imageUrl,
-        lang: AppLanguage.fromCode(lang),
-        createdAt: createdAt,
-      );
+    id: id,
+    title: title,
+    description: description,
+    city: city,
+    category: EventCategory.fromString(category),
+    dateStart: dateStart,
+    dateEnd: dateEnd,
+    centerId: centerId,
+    isFree: isFree,
+    imageUrl: imageUrl,
+    lang: AppLanguage.fromCode(lang),
+    createdAt: createdAt,
+  );
 }
 
 extension CenterRowX on CenterRow {
   model.Center toModel() => model.Center(
-        id: id,
-        name: name,
-        city: city,
-        address: address,
-        lat: lat,
-        lng: lng,
-        phone: phone,
-        hours: hours,
-        createdAt: createdAt,
-      );
+    id: id,
+    name: name,
+    city: city,
+    address: address,
+    lat: lat,
+    lng: lng,
+    phone: phone,
+    hours: hours,
+    createdAt: createdAt,
+  );
 }
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 final databaseProvider = Provider<AppDatabase>(
-  (_) => throw UnimplementedError('databaseProvider must be overridden in main'),
+  (_) =>
+      throw UnimplementedError('databaseProvider must be overridden in main'),
 );

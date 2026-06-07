@@ -16,8 +16,8 @@ class Category {
   final String icon;
 
   String localizedName(String langCode) => switch (langCode) {
-        'ar' => nameAr,
-        'tz' => nameTz,
-        _ => nameFr,
-      };
+    'ar' => nameAr,
+    'tz' => nameTz,
+    _ => nameFr,
+  };
 }

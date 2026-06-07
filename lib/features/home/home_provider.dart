@@ -46,8 +46,9 @@ class HomeNotifier extends Notifier<HomeState> {
     final citycenters = allCenters
         .where((c) => c.city.toLowerCase() == city.toLowerCase())
         .toList();
-    final nearbyCenters =
-        (citycenters.isNotEmpty ? citycenters : allCenters).take(3).toList();
+    final nearbyCenters = (citycenters.isNotEmpty ? citycenters : allCenters)
+        .take(3)
+        .toList();
 
     return HomeState(
       city: city,
@@ -60,21 +61,21 @@ class HomeNotifier extends Notifier<HomeState> {
 
   /// Événements dont la catégorie est dans les intérêts en premier,
   /// puis le reste. Ordre chronologique dans chaque groupe.
-  List<Event> _sortByInterests(List<Event> events, Set<EventCategory> interests) {
+  List<Event> _sortByInterests(
+    List<Event> events,
+    Set<EventCategory> interests,
+  ) {
     if (interests.isEmpty) {
       return events..sort((a, b) => a.dateStart.compareTo(b.dateStart));
     }
-    final matched = events
-        .where((e) => interests.contains(e.category))
-        .toList()
+    final matched = events.where((e) => interests.contains(e.category)).toList()
       ..sort((a, b) => a.dateStart.compareTo(b.dateStart));
-    final others = events
-        .where((e) => !interests.contains(e.category))
-        .toList()
+    final others = events.where((e) => !interests.contains(e.category)).toList()
       ..sort((a, b) => a.dateStart.compareTo(b.dateStart));
     return [...matched, ...others];
   }
 }
 
-final homeProvider =
-    NotifierProvider<HomeNotifier, HomeState>(HomeNotifier.new);
+final homeProvider = NotifierProvider<HomeNotifier, HomeState>(
+  HomeNotifier.new,
+);

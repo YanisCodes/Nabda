@@ -65,5 +65,20 @@
   "sectionInterests": "Iswi·nnek",
   "sectionForYou": "I kem/kek",
   "labelSoon": "Seld",
-  "labelOngoing": "Tura"
+  "labelOngoing": "Tura",
+  "navSaved": "Iḥerraz",
+  "noSavedEvents": "Ulac imunas yettwaḥerzen.",
+  "btnAddToCalendar": "Rnu ɣer wawalen",
+  "filterAllDates": "Meṛṛa",
+  "filterToday": "Ass-a",
+  "filterThisWeek": "Dduṛt-a",
+  "filterThisMonth": "Aggur-a",
+  "btnReportProblem": "Ini-d ugur",
+  "btnReportEvent": "Ini-d ugur ɣef umunas-a",
+  "errorCantOpenEmail": "Ur zemreɣ ara ad ldiɣ email",
+  "btnSetReminder": "Smekti-yi-d",
+  "btnReminderSet": "Asmekti yella",
+  "snackReminderSet": "Asmekti yettwarmed 1h send amunas",
+  "snackReminderRemoved": "Asmekti yettwakkes",
+  "snackReminderTooLate": "Amunas d aqrib aṭas i usmekti"
 }

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:share_plus/share_plus.dart' show SharePlus, ShareParams;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/animations.dart';
 import '../../data/local/data_providers.dart';
 import '../../data/models/center.dart' as model;
 import '../../data/models/event.dart';
 import '../../data/models/event_category.dart';
 import '../../data/models/event_timing.dart';
 import '../../l10n/app_localizations.dart';
+import '../favorites/favorites_provider.dart';
+import '../feedback/feedback_helper.dart';
 import '../map/map_screen.dart';
+import 'calendar_helper.dart';
+import 'reminder_provider.dart';
+import 'share_helper.dart';
 
 class EventDetailScreen extends ConsumerWidget {
   const EventDetailScreen({super.key, required this.event});
@@ -24,12 +31,24 @@ class EventDetailScreen extends ConsumerWidget {
         ? allCenters.where((c) => c.id == event.centerId).firstOrNull
         : null;
 
+    final isFavorite = ref.watch(favoritesProvider).contains(event.id);
+    final shareText = buildShareText(event, center: center);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          _EventSliverAppBar(event: event),
+          _EventSliverAppBar(
+            event: event,
+            isFavorite: isFavorite,
+            onToggleFavorite: () =>
+                ref.read(favoritesProvider.notifier).toggleFavorite(event.id),
+            onShare: () =>
+                SharePlus.instance.share(ShareParams(text: shareText)),
+          ),
           SliverToBoxAdapter(
-            child: _EventBody(event: event, center: center),
+            child: SlideIn(
+              child: _EventBody(event: event, center: center),
+            ),
           ),
         ],
       ),
@@ -40,19 +59,37 @@ class EventDetailScreen extends ConsumerWidget {
 // ─── Header collapsible ───────────────────────────────────────────────────────
 
 class _EventSliverAppBar extends StatelessWidget {
-  const _EventSliverAppBar({required this.event});
+  const _EventSliverAppBar({
+    required this.event,
+    required this.isFavorite,
+    required this.onToggleFavorite,
+    required this.onShare,
+  });
   final Event event;
+  final bool isFavorite;
+  final VoidCallback onToggleFavorite;
+  final VoidCallback onShare;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 210,
       pinned: true,
-      title: Text(
-        event.title,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
+      title: Text(event.title, maxLines: 1, overflow: TextOverflow.ellipsis),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.share_outlined),
+          color: AppColors.textSecondary,
+          onPressed: onShare,
+        ),
+        AnimatedFavoriteIcon(
+          isFavorite: isFavorite,
+          onTap: onToggleFavorite,
+          size: 24,
+          inactiveColor: AppColors.textSecondary,
+          padding: const EdgeInsets.all(12),
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.pin,
         background: _CategoryHeader(category: event.category),
@@ -82,20 +119,20 @@ class _CategoryHeader extends StatelessWidget {
   }
 
   Color _bgColor(EventCategory c) => switch (c) {
-        EventCategory.formation => const Color(0xFF1A3A5C),
-        EventCategory.sport => const Color(0xFF1A4A2E),
-        EventCategory.culture => const Color(0xFF3A1A4A),
-        EventCategory.ecologie => const Color(0xFF1A4A20),
-        EventCategory.volontariat => const Color(0xFF4A2A1A),
-      };
+    EventCategory.formation => const Color(0xFF1A3A5C),
+    EventCategory.sport => const Color(0xFF1A4A2E),
+    EventCategory.culture => const Color(0xFF3A1A4A),
+    EventCategory.ecologie => const Color(0xFF1A4A20),
+    EventCategory.volontariat => const Color(0xFF4A2A1A),
+  };
 
   IconData _icon(EventCategory c) => switch (c) {
-        EventCategory.formation => Icons.school_rounded,
-        EventCategory.sport => Icons.sports_soccer_rounded,
-        EventCategory.culture => Icons.theater_comedy_rounded,
-        EventCategory.ecologie => Icons.eco_rounded,
-        EventCategory.volontariat => Icons.volunteer_activism_rounded,
-      };
+    EventCategory.formation => Icons.school_rounded,
+    EventCategory.sport => Icons.sports_soccer_rounded,
+    EventCategory.culture => Icons.theater_comedy_rounded,
+    EventCategory.ecologie => Icons.eco_rounded,
+    EventCategory.volontariat => Icons.volunteer_activism_rounded,
+  };
 }
 
 // ─── Corps scrollable ─────────────────────────────────────────────────────────
@@ -135,13 +172,13 @@ class _EventBody extends StatelessWidget {
           const SizedBox(height: 20),
           _InfoRow(
             icon: Icons.calendar_today_outlined,
-            text: _formatDateRange(event, Localizations.localeOf(context).toString()),
+            text: _formatDateRange(
+              event,
+              Localizations.localeOf(context).toString(),
+            ),
           ),
           const SizedBox(height: 10),
-          _InfoRow(
-            icon: Icons.location_on_outlined,
-            text: event.city,
-          ),
+          _InfoRow(icon: Icons.location_on_outlined, text: event.city),
           if (timing == EventTimingStatus.soon ||
               timing == EventTimingStatus.ongoing) ...[
             const SizedBox(height: 16),
@@ -175,6 +212,12 @@ class _EventBody extends StatelessWidget {
           _ContactButton(center: center),
           const SizedBox(height: 10),
           _MapButton(center: center, city: event.city),
+          const SizedBox(height: 10),
+          _CalendarButton(event: event, center: center),
+          const SizedBox(height: 10),
+          _ReminderButton(event: event),
+          const SizedBox(height: 20),
+          Center(child: _ReportLink(event: event)),
           const SizedBox(height: 16),
         ],
       ),
@@ -217,9 +260,9 @@ class _InfoRow extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary),
           ),
         ),
       ],
@@ -265,7 +308,10 @@ class _CenterCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              _CenterRow(icon: Icons.location_on_outlined, text: center.address),
+              _CenterRow(
+                icon: Icons.location_on_outlined,
+                text: center.address,
+              ),
               const SizedBox(height: 6),
               _CenterRow(icon: Icons.access_time_outlined, text: center.hours),
               const SizedBox(height: 6),
@@ -292,9 +338,9 @@ class _CenterRow extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppColors.textSecondary,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodySmall?.copyWith(color: AppColors.textSecondary),
           ),
         ),
       ],
@@ -344,10 +390,16 @@ class _TimingBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (label, icon, color) = switch (status) {
-      EventTimingStatus.ongoing =>
-        (l10n.labelOngoing, Icons.fiber_manual_record_rounded, AppColors.success),
-      EventTimingStatus.soon =>
-        (l10n.labelSoon, Icons.access_time_rounded, AppColors.amber),
+      EventTimingStatus.ongoing => (
+        l10n.labelOngoing,
+        Icons.fiber_manual_record_rounded,
+        AppColors.success,
+      ),
+      EventTimingStatus.soon => (
+        l10n.labelSoon,
+        Icons.access_time_rounded,
+        AppColors.amber,
+      ),
       _ => ('', Icons.circle, Colors.transparent),
     };
     if (label.isEmpty) return const SizedBox.shrink();
@@ -392,19 +444,124 @@ class _MapButton extends StatelessWidget {
       child: OutlinedButton.icon(
         onPressed: hasLocation
             ? () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => MapScreen(
-                      focusCenter: center,
-                      focusCity: center == null ? city : null,
-                    ),
+                context,
+                MaterialPageRoute(
+                  builder: (_) => MapScreen(
+                    focusCenter: center,
+                    focusCity: center == null ? city : null,
                   ),
-                )
+                ),
+              )
             : null,
         icon: const Icon(Icons.map_outlined, size: 18),
         label: Text(l10n.btnViewOnMap),
       ),
     );
+  }
+}
+
+class _CalendarButton extends StatelessWidget {
+  const _CalendarButton({required this.event, required this.center});
+  final Event event;
+  final model.Center? center;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: () => addEventToCalendar(event, center: center),
+        icon: const Icon(Icons.calendar_month_outlined, size: 18),
+        label: Text(l10n.btnAddToCalendar),
+      ),
+    );
+  }
+}
+
+class _ReminderButton extends ConsumerWidget {
+  const _ReminderButton({required this.event});
+  final Event event;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    final isSet = ref.watch(reminderProvider).contains(event.id);
+    final isPast = event.dateStart.isBefore(DateTime.now());
+
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        onPressed: isPast ? null : () => _toggle(context, ref),
+        icon: Icon(
+          isSet
+              ? Icons.notifications_active_rounded
+              : Icons.notifications_none_outlined,
+          size: 18,
+        ),
+        label: Text(isSet ? l10n.btnReminderSet : l10n.btnSetReminder),
+      ),
+    );
+  }
+
+  Future<void> _toggle(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
+    final result = await ref
+        .read(reminderProvider.notifier)
+        .toggleReminder(event);
+    if (!context.mounted) return;
+
+    final message = switch (result) {
+      ReminderResult.set => l10n.snackReminderSet,
+      ReminderResult.removed => l10n.snackReminderRemoved,
+      ReminderResult.tooLate => l10n.snackReminderTooLate,
+      ReminderResult.permissionDenied => null,
+    };
+
+    if (message != null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
+    }
+  }
+}
+
+class _ReportLink extends StatelessWidget {
+  const _ReportLink({required this.event});
+  final Event event;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return GestureDetector(
+      onTap: () => _report(context),
+      child: Text(
+        l10n.btnReportEvent,
+        style: const TextStyle(
+          color: AppColors.textDisabled,
+          fontSize: 12,
+          decoration: TextDecoration.underline,
+          decorationColor: AppColors.textDisabled,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _report(BuildContext context) async {
+    if (!await launchFeedbackEmail(
+      eventTitle: event.title,
+      eventId: event.id,
+    )) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context).errorCantOpenEmail),
+          ),
+        );
+      }
+    }
   }
 }
 
@@ -418,11 +575,17 @@ class _CategoryBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final (label, color) = switch (category) {
-      EventCategory.formation => (l10n.categoryFormation, const Color(0xFF1565C0)),
+      EventCategory.formation => (
+        l10n.categoryFormation,
+        const Color(0xFF1565C0),
+      ),
       EventCategory.sport => (l10n.categorySport, const Color(0xFF2E7D32)),
       EventCategory.culture => (l10n.categoryCulture, const Color(0xFF6A1B9A)),
       EventCategory.ecologie => (l10n.categoryEcologie, AppColors.green),
-      EventCategory.volontariat => (l10n.categoryVolontariat, const Color(0xFFBF360C)),
+      EventCategory.volontariat => (
+        l10n.categoryVolontariat,
+        const Color(0xFFBF360C),
+      ),
     };
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),

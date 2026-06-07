@@ -405,6 +405,96 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'En cours'**
   String get labelOngoing;
+
+  /// No description provided for @navSaved.
+  ///
+  /// In fr, this message translates to:
+  /// **'Favoris'**
+  String get navSaved;
+
+  /// No description provided for @noSavedEvents.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun événement sauvegardé.'**
+  String get noSavedEvents;
+
+  /// No description provided for @btnAddToCalendar.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajouter au calendrier'**
+  String get btnAddToCalendar;
+
+  /// No description provided for @filterAllDates.
+  ///
+  /// In fr, this message translates to:
+  /// **'Toutes'**
+  String get filterAllDates;
+
+  /// No description provided for @filterToday.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aujourd\'hui'**
+  String get filterToday;
+
+  /// No description provided for @filterThisWeek.
+  ///
+  /// In fr, this message translates to:
+  /// **'Cette semaine'**
+  String get filterThisWeek;
+
+  /// No description provided for @filterThisMonth.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce mois'**
+  String get filterThisMonth;
+
+  /// No description provided for @btnReportProblem.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signaler un problème'**
+  String get btnReportProblem;
+
+  /// No description provided for @btnReportEvent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signaler un problème avec cet événement'**
+  String get btnReportEvent;
+
+  /// No description provided for @errorCantOpenEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Impossible d\'ouvrir l\'application e-mail'**
+  String get errorCantOpenEmail;
+
+  /// No description provided for @btnSetReminder.
+  ///
+  /// In fr, this message translates to:
+  /// **'Me rappeler'**
+  String get btnSetReminder;
+
+  /// No description provided for @btnReminderSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rappel programmé'**
+  String get btnReminderSet;
+
+  /// No description provided for @snackReminderSet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rappel programmé 1h avant l\'événement'**
+  String get snackReminderSet;
+
+  /// No description provided for @snackReminderRemoved.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rappel annulé'**
+  String get snackReminderRemoved;
+
+  /// No description provided for @snackReminderTooLate.
+  ///
+  /// In fr, this message translates to:
+  /// **'L\'événement est trop proche pour un rappel'**
+  String get snackReminderTooLate;
 }
 
 class _AppLocalizationsDelegate

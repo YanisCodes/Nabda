@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/wilayas.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/animations.dart';
 import '../../data/models/app_language.dart';
 import '../../l10n/app_localizations.dart';
 import '../home/home_screen.dart';
@@ -25,20 +26,40 @@ class OnboardingScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 48),
-              _Header(theme: theme, subtitle: l10n.onboardingSubtitle),
+              SlideIn(
+                child: _Header(theme: theme, subtitle: l10n.onboardingSubtitle),
+              ),
               const SizedBox(height: 48),
-              _SectionLabel(label: l10n.labelYourCity, theme: theme),
+              SlideIn(
+                delay: const Duration(milliseconds: 120),
+                child: _SectionLabel(label: l10n.labelYourCity, theme: theme),
+              ),
               const SizedBox(height: 12),
-              _CityDropdown(
-                selectedCity: state.city,
-                hint: l10n.hintSelectWilaya,
+              SlideIn(
+                delay: const Duration(milliseconds: 180),
+                child: _CityDropdown(
+                  selectedCity: state.city,
+                  hint: l10n.hintSelectWilaya,
+                ),
               ),
               const SizedBox(height: 32),
-              _SectionLabel(label: l10n.labelYourLanguage, theme: theme),
+              SlideIn(
+                delay: const Duration(milliseconds: 240),
+                child: _SectionLabel(
+                  label: l10n.labelYourLanguage,
+                  theme: theme,
+                ),
+              ),
               const SizedBox(height: 12),
-              _LanguageSelector(selectedLanguage: state.language),
+              SlideIn(
+                delay: const Duration(milliseconds: 300),
+                child: _LanguageSelector(selectedLanguage: state.language),
+              ),
               const SizedBox(height: 48),
-              _StartButton(state: state, label: l10n.btnStart),
+              SlideIn(
+                delay: const Duration(milliseconds: 380),
+                child: _StartButton(state: state, label: l10n.btnStart),
+              ),
               const SizedBox(height: 32),
             ],
           ),
@@ -128,8 +149,11 @@ class _CityDropdown extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
-          const Icon(Icons.location_on_outlined,
-              color: AppColors.green, size: 20),
+          const Icon(
+            Icons.location_on_outlined,
+            color: AppColors.green,
+            size: 20,
+          ),
           const SizedBox(width: 8),
           Expanded(
             child: DropdownButton<String>(
@@ -144,8 +168,10 @@ class _CityDropdown extends ConsumerWidget {
               ),
               hint: Text(
                 hint,
-                style:
-                    const TextStyle(color: AppColors.textDisabled, fontSize: 15),
+                style: const TextStyle(
+                  color: AppColors.textDisabled,
+                  fontSize: 15,
+                ),
               ),
               items: kWilayas.map((wilaya) {
                 return DropdownMenuItem<String>(
@@ -217,7 +243,9 @@ class _LangChip extends ConsumerWidget {
           duration: const Duration(milliseconds: 150),
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-            color: selected ? AppColors.greenDark : AppColors.surfaceVariantDark,
+            color: selected
+                ? AppColors.greenDark
+                : AppColors.surfaceVariantDark,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: selected ? AppColors.green : AppColors.borderDark,

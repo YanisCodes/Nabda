@@ -168,4 +168,50 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get labelOngoing => 'En cours';
+
+  @override
+  String get navSaved => 'Favoris';
+
+  @override
+  String get noSavedEvents => 'Aucun événement sauvegardé.';
+
+  @override
+  String get btnAddToCalendar => 'Ajouter au calendrier';
+
+  @override
+  String get filterAllDates => 'Toutes';
+
+  @override
+  String get filterToday => 'Aujourd\'hui';
+
+  @override
+  String get filterThisWeek => 'Cette semaine';
+
+  @override
+  String get filterThisMonth => 'Ce mois';
+
+  @override
+  String get btnReportProblem => 'Signaler un problème';
+
+  @override
+  String get btnReportEvent => 'Signaler un problème avec cet événement';
+
+  @override
+  String get errorCantOpenEmail => 'Impossible d\'ouvrir l\'application e-mail';
+
+  @override
+  String get btnSetReminder => 'Me rappeler';
+
+  @override
+  String get btnReminderSet => 'Rappel programmé';
+
+  @override
+  String get snackReminderSet => 'Rappel programmé 1h avant l\'événement';
+
+  @override
+  String get snackReminderRemoved => 'Rappel annulé';
+
+  @override
+  String get snackReminderTooLate =>
+      'L\'événement est trop proche pour un rappel';
 }

@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants/mock_data.dart';
 import '../../core/theme/app_theme.dart';
+import '../../core/utils/animations.dart';
+import '../../core/utils/page_route.dart';
 import '../../data/models/event_category.dart';
 import '../../l10n/app_localizations.dart';
 import '../event_detail/event_detail_screen.dart';
+import '../favorites/favorites_provider.dart';
 import 'explore_provider.dart';
 import 'widgets/event_card.dart';
 
@@ -46,6 +49,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
       body: Column(
         children: [
           _SearchBar(controller: _searchController),
+          _DatePresetChips(selected: state.datePreset),
           if (state.availableCities.length > 1)
             _CityFilter(
               availableCities: state.availableCities,
@@ -57,13 +61,21 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                 : ListView.builder(
                     padding: const EdgeInsets.only(top: 8, bottom: 16),
                     itemCount: state.events.length,
-                    itemBuilder: (context, i) => EventCard(
-                      event: state.events[i],
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) =>
-                              EventDetailScreen(event: state.events[i]),
+                    itemBuilder: (context, i) => SlideIn(
+                      verticalOffset: 16,
+                      child: EventCard(
+                        event: state.events[i],
+                        isFavorite: ref
+                            .watch(favoritesProvider)
+                            .contains(state.events[i].id),
+                        onToggleFavorite: () => ref
+                            .read(favoritesProvider.notifier)
+                            .toggleFavorite(state.events[i].id),
+                        onTap: () => Navigator.push(
+                          context,
+                          AppPageRoute(
+                            page: EventDetailScreen(event: state.events[i]),
+                          ),
                         ),
                       ),
                     ),
@@ -120,8 +132,10 @@ class _SearchBar extends ConsumerWidget {
           ),
           filled: true,
           fillColor: AppColors.surfaceVariantDark,
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 14,
+            vertical: 10,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(color: AppColors.borderDark),
@@ -225,6 +239,113 @@ class _CityFilter extends ConsumerWidget {
   }
 }
 
+// ─── Chips de date ───────────────────────────────────────────────────────────
+
+class _DatePresetChips extends ConsumerWidget {
+  const _DatePresetChips({required this.selected});
+  final DatePreset selected;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+
+    return SizedBox(
+      height: 44,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
+        children: [
+          _DateChip(
+            label: l10n.filterAllDates,
+            isSelected: selected == DatePreset.all,
+            onTap: () => ref
+                .read(exploreProvider.notifier)
+                .selectDatePreset(DatePreset.all),
+          ),
+          _DateChip(
+            label: l10n.filterToday,
+            isSelected: selected == DatePreset.today,
+            onTap: () => ref
+                .read(exploreProvider.notifier)
+                .selectDatePreset(DatePreset.today),
+          ),
+          _DateChip(
+            label: l10n.filterThisWeek,
+            isSelected: selected == DatePreset.thisWeek,
+            onTap: () => ref
+                .read(exploreProvider.notifier)
+                .selectDatePreset(DatePreset.thisWeek),
+          ),
+          _DateChip(
+            label: l10n.filterThisMonth,
+            isSelected: selected == DatePreset.thisMonth,
+            onTap: () => ref
+                .read(exploreProvider.notifier)
+                .selectDatePreset(DatePreset.thisMonth),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DateChip extends StatelessWidget {
+  const _DateChip({
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsetsDirectional.only(end: 8),
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? AppColors.amber.withValues(alpha: 0.15)
+                : AppColors.surfaceVariantDark,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: isSelected ? AppColors.amber : AppColors.borderDark,
+              width: isSelected ? 1.5 : 1.0,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (isSelected) ...[
+                Icon(
+                  Icons.calendar_today_rounded,
+                  size: 12,
+                  color: AppColors.amber,
+                ),
+                const SizedBox(width: 4),
+              ],
+              Text(
+                label,
+                style: TextStyle(
+                  color: isSelected ? AppColors.amber : AppColors.textSecondary,
+                  fontSize: 12,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 // ─── Chips de catégorie ───────────────────────────────────────────────────────
 
 class _CategoryChips extends ConsumerWidget {
@@ -247,16 +368,17 @@ class _CategoryChips extends ConsumerWidget {
             onTap: () =>
                 ref.read(exploreProvider.notifier).selectCategory(null),
           ),
-          ...kCategories.map((cat) => Padding(
-                padding: const EdgeInsetsDirectional.only(start: 8),
-                child: _Chip(
-                  label: _categoryLabel(l10n, cat.id),
-                  isSelected: selected == cat.id,
-                  onTap: () => ref
-                      .read(exploreProvider.notifier)
-                      .selectCategory(cat.id),
-                ),
-              )),
+          ...kCategories.map(
+            (cat) => Padding(
+              padding: const EdgeInsetsDirectional.only(start: 8),
+              child: _Chip(
+                label: _categoryLabel(l10n, cat.id),
+                isSelected: selected == cat.id,
+                onTap: () =>
+                    ref.read(exploreProvider.notifier).selectCategory(cat.id),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -323,23 +445,25 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(
-            Icons.search_off_rounded,
-            size: 48,
-            color: AppColors.textDisabled,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            message,
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium?.copyWith(
-              color: AppColors.textSecondary,
+      child: SlideIn(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.search_off_rounded,
+              size: 48,
+              color: AppColors.textDisabled,
             ),
-          ),
-        ],
+            const SizedBox(height: 16),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

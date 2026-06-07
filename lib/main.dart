@@ -12,6 +12,7 @@ import 'data/local/database.dart';
 import 'data/local/preferences.dart';
 import 'data/remote/supabase_client.dart';
 import 'data/sync/sync_service.dart';
+import 'features/event_detail/notification_helper.dart';
 import 'features/home/home_screen.dart';
 import 'features/onboarding/onboarding_screen.dart';
 import 'l10n/app_localizations.dart';
@@ -36,6 +37,8 @@ void main() async {
   // Initialiser Supabase si configuré
   await initSupabase();
 
+  await initNotifications();
+
   final container = ProviderContainer(
     overrides: [
       preferencesProvider.overrideWithValue(preferences),
@@ -46,10 +49,7 @@ void main() async {
   );
 
   runApp(
-    UncontrolledProviderScope(
-      container: container,
-      child: const OtejApp(),
-    ),
+    UncontrolledProviderScope(container: container, child: const OtejApp()),
   );
 
   // Sync en arrière-plan après le premier frame — ne bloque pas l'UI
@@ -83,14 +83,8 @@ class OtejApp extends ConsumerWidget {
         _TzmFallbackWidgetsDelegate(),
         _TzmFallbackCupertinoDelegate(),
       ],
-      supportedLocales: const [
-        Locale('fr'),
-        Locale('ar'),
-        Locale('tzm'),
-      ],
-      home: prefs.isFirstLaunch
-          ? const OnboardingScreen()
-          : const HomeScreen(),
+      supportedLocales: const [Locale('fr'), Locale('ar'), Locale('tzm')],
+      home: prefs.isFirstLaunch ? const OnboardingScreen() : const HomeScreen(),
     );
   }
 }

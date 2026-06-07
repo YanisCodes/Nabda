@@ -11,9 +11,9 @@ class EventsDao extends DatabaseAccessor<AppDatabase> with _$EventsDaoMixin {
   EventsDao(super.db);
 
   Future<List<Event>> getAllModels() async {
-    final rows = await (select(events)
-          ..orderBy([(t) => OrderingTerm.asc(t.dateStart)]))
-        .get();
+    final rows = await (select(
+      events,
+    )..orderBy([(t) => OrderingTerm.asc(t.dateStart)])).get();
     return rows.map((r) => r.toModel()).toList();
   }
 
@@ -25,10 +25,11 @@ class EventsDao extends DatabaseAccessor<AppDatabase> with _$EventsDaoMixin {
   }
 
   Future<List<Event>> getByCategoryModels(EventCategory category) async {
-    final rows = await (select(events)
-          ..where((t) => t.category.equals(category.name))
-          ..orderBy([(t) => OrderingTerm.asc(t.dateStart)]))
-        .get();
+    final rows =
+        await (select(events)
+              ..where((t) => t.category.equals(category.name))
+              ..orderBy([(t) => OrderingTerm.asc(t.dateStart)]))
+            .get();
     return rows.map((r) => r.toModel()).toList();
   }
 

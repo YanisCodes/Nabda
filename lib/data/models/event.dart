@@ -50,19 +50,19 @@ class Event {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'title': title,
-        'description': description,
-        'city': city,
-        'category': category.name,
-        'date_start': dateStart.toIso8601String(),
-        'date_end': dateEnd?.toIso8601String(),
-        'center_id': centerId,
-        'is_free': isFree,
-        'image_url': imageUrl,
-        'lang': lang.code,
-        'created_at': createdAt.toIso8601String(),
-      };
+    'id': id,
+    'title': title,
+    'description': description,
+    'city': city,
+    'category': category.name,
+    'date_start': dateStart.toIso8601String(),
+    'date_end': dateEnd?.toIso8601String(),
+    'center_id': centerId,
+    'is_free': isFree,
+    'image_url': imageUrl,
+    'lang': lang.code,
+    'created_at': createdAt.toIso8601String(),
+  };
 
   Event copyWith({
     String? id,

@@ -143,6 +143,11 @@ _L'Explorer avant l'Accueil : plus simple car pas de logique "personnalisé", ju
 - [x] **P04** Centres d'intérêt dans le profil + filtrage accueil personnalisé
 - [x] **P05** Rappel intelligent local — badge "Bientôt" / "En cours" sur les cartes et détail événement
 - [x] **P06** Polish / QA / Stabilisation — titre AppBar traduit (`l10n.appName`), overflow protégé sur la ligne date+ville des cartes événement (`Flexible`)
+- [x] **P07** Favoris / opportunités sauvegardées — bouton favori sur les cartes et détail, onglet "Favoris" dans la navigation, persistance via SharedPreferences
+- [x] **P08** Partage d'opportunité — bouton partage dans le détail événement via `share_plus`, texte formaté avec titre/lieu/date/téléphone
+- [x] **P09** Ajout au calendrier — bouton "Ajouter au calendrier" dans le détail événement via `add_2_calendar`, ouvre l'app calendrier native avec données pré-remplies
+- [x] **P10** Polish final / Release prep — `dart format` sur tout `lib/`, label Android corrigé ("OTEJ Link"), vérification i18n FR/AR/TZM complète, 0 erreur analyseur
+- [x] **P12** Notifications locales / Rappels — bouton "Me rappeler" sur le détail événement, notification locale 1h avant via `flutter_local_notifications`, état persisté via SharedPreferences, i18n FR/AR/TZM
 
 - [ ] Module volontariat (missions + heures)
 - [ ] Notifications push (Firebase FCM)
